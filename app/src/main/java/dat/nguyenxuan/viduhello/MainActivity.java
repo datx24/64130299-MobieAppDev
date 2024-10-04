@@ -3,6 +3,7 @@ package dat.nguyenxuan.viduhello;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,22 +26,68 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public  void  SayHello(View v) {
-        //Tìm điều khiển
+    private double laySo(String s) {
+        return Double.parseDouble(s);
+    }
+
+    private void hienThiKetQua(String ketQua) {
+        TextView txtResult = findViewById(R.id.edtResult);
+        txtResult.setText("Kết quả: " + ketQua);
+    }
+
+    public void TinhCong(View v) {
+        tinhToan('+');
+    }
+
+    public void TinhTru(View v) {
+        tinhToan('-');
+    }
+
+    public void TinhNhan(View v) {
+        tinhToan('*');
+    }
+
+    public void TinhChia(View v) {
+        tinhToan('/');
+    }
+
+    private void tinhToan(char phepToan) {
         EditText soThuNhat = findViewById(R.id.edtNum);
         EditText soThuHai = findViewById(R.id.edtNum1);
-        //Lấy dữ liệu. getter
+
         String s1 = soThuNhat.getText().toString();
         String s2 = soThuHai.getText().toString();
-        //Chuyển kiểu
-        double num1 = Double.parseDouble(s1);
-        double num2 = Double.parseDouble(s2);
-        //Tinh toán
-        double tong = num1 + num2;
 
-        //Chuẩn bị đề xuất
-        String chuoiXuat = "Tổng là: " + String.valueOf(tong);
+        if (s1.isEmpty() || s2.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập cả hai số.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        Toast.makeText(this,"Bạn vừa chạm tôi!",Toast.LENGTH_SHORT).show();
+        double num1 = laySo(s1);
+        double num2 = laySo(s2);
+        double ketQua;
+
+        switch (phepToan) {
+            case '+':
+                ketQua = num1 + num2;
+                break;
+            case '-':
+                ketQua = num1 - num2;
+                break;
+            case '*':
+                ketQua = num1 * num2;
+                break;
+            case '/':
+                ketQua = num2 != 0 ? num1 / num2 : Double.NaN; // Kiểm tra chia cho 0
+                break;
+            default:
+                ketQua = 0;
+        }
+
+        if (phepToan == '/' && num2 == 0) {
+            hienThiKetQua("Không thể chia cho 0");
+        } else {
+            hienThiKetQua(String.valueOf(ketQua));
+        }
     }
 }
