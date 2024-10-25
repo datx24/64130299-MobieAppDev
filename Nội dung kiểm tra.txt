@@ -1,0 +1,5 @@
+Nội dung kiểm tra
+Câu 1: BMI
+Câu 2: Profile
+Câu 3: ListView
+Câu 4: RecyclerView
