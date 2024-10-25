@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rowCount="3"
+        android:columnCount="3"
+        android:layout_gravity="center">
+
+        <!-- Tạo 9 Button cho lưới 3x3 -->
+        <Button
+            android:id="@+id/button1"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button2"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button3"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button4"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button5"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button6"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button7"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button8"
+            style="@style/CaroButton"/>
+        <Button
+            android:id="@+id/button9"
+            style="@style/CaroButton"/>
+    </GridLayout>
+</RelativeLayout>
