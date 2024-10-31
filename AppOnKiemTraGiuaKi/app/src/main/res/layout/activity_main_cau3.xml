@@ -48,20 +48,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="24dp"
-                    android:background="@drawable/edittext_background" />
+                    android:background="@drawable/edittext_background"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Search Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/searchButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tìm kiếm"
-                android:minHeight="48dp"
-                android:minWidth="96dp"
-                android:padding="12dp"
-                android:backgroundTint="#2196F3"
-            android:textColor="@android:color/white" />
+
         </LinearLayout>
 
         <ListView
