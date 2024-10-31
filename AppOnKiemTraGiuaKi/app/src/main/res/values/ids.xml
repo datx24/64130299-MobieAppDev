@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="cardView2" type="id" />
+    <item name="cardView3" type="id" />
+    <item name="cardView4" type="id" />
+
+</resources>

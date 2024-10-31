@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primaryColor">#FF6200EE</color> <!-- Màu tím đậm -->
+    <color name="secondaryColor">#03DAC5</color> <!-- Màu xanh ngọc -->
+    <color name="background_color">#FFFFFF</color> <!-- Màu nền trắng -->
+    <color name="colorPrimary">#6200EE</color>       <!-- Màu chính -->
+    <color name="colorPrimaryDark">#3700B3</color>    <!-- Màu chính tối -->
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPink" >#FFB1B1</color>
+</resources>

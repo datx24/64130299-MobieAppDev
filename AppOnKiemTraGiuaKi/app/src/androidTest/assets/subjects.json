@@ -1,0 +1,58 @@
+{
+  "Subjects": [
+    {
+      "id": 1,
+      "code": "NEC331",
+      "name": "Lập trình Java",
+      "credits": 3,
+      "knowledgeType": "Kiến thức chung",
+      "academicYear": "2024-2025",
+      "semester": 1
+    },
+    {
+      "id": 2,
+      "code": "POL333",
+      "name": "Tư tưởng Hồ Chí Minh",
+      "credits": 2,
+      "knowledgeType": "Kiến thức chung",
+      "academicYear": "2024-2025",
+      "semester": 1
+    },
+    {
+      "id": 3,
+      "code": "SOT352",
+      "name": "Quản lý dự án phần mềm",
+      "credits": 3,
+      "knowledgeType": "Kiến thức chung",
+      "academicYear": "2024-2025",
+      "semester": 1
+    },
+    {
+      "id": 4,
+      "code": "SOT378",
+      "name": "Phát triển ứng dụng Web 1",
+      "credits": 3,
+      "knowledgeType": "Kiến thức chung",
+      "academicYear": "2024-2025",
+      "semester": 1
+    },
+    {
+      "id": 5,
+      "code": "SOT379",
+      "name": "Lập trình thiết bị di động",
+      "credits": 4,
+      "knowledgeType": "Kiến thức chung",
+      "academicYear": "2024-2025",
+      "semester": 1
+    },
+    {
+      "id": 6,
+      "code": "SOT380",
+      "name": "Kiến trúc và thiết kế phần mềm",
+      "credits": 3,
+      "knowledgeType": "Kiến thức chung",
+      "academicYear": "2024-2025",
+      "semester": 1
+    }
+  ]
+}
