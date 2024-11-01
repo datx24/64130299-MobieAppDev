@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context="vn.nguyenxuandat.apponkiemtragiuaki.MainActivity">
+
+    <!-- Nút 1 -->
+
+    <!-- Nút 2 -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button4"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="#FF4545"
+        android:icon="@drawable/ic_question"
+        android:iconTint="@color/primaryColor"
+        android:minWidth="100dip"
+        android:minHeight="100dip"
+        android:onClick="ChuyenSangCau2"
+        android:text="Câu 4"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button2"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/colorPink"
+        android:icon="@drawable/ic_question"
+        android:iconTint="@color/primaryColor"
+        android:minWidth="100dip"
+        android:minHeight="100dip"
+        android:onClick="ChuyenSangCau3"
+        android:text="Câu 2"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button3"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/secondaryColor"
+        android:icon="@drawable/ic_question"
+        android:iconTint="@color/primaryColor"
+        android:minWidth="100dip"
+        android:minHeight="100dip"
+        android:onClick="ChuyenSangCau4"
+        android:text="Câu 3"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="#1679AB"
+        android:icon="@drawable/ic_question"
+        android:iconTint="@color/primaryColor"
+        android:minWidth="100dip"
+        android:minHeight="100dip"
+        android:onClick="ChuyenSangCau1"
+        android:text="Câu 1"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Nút 3 -->
+
+    <!-- Nút 4 -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

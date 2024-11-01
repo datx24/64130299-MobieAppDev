@@ -1,0 +1,14 @@
+<resources>
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="HintTextStyle">
+        <item name="android:textColorHint">#FFFFFF</item> <!-- Màu chữ hint -->
+        <item name="android:textSize">14sp</item> <!-- Kích thước chữ hint -->
+        <item name="android:fontFamily">sans-serif</item> <!-- Kiểu chữ -->
+    </style>
+</resources>
