@@ -1,8 +1,11 @@
 package datnx.doan.timdothatlac;
 
+import android.Manifest;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -16,13 +19,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import android.Manifest;
 
+import java.io.IOException;
 
 public class AddItemActivity extends AppCompatActivity {
-    // Khai báo hằng số cho yêu cầu quyền camera
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private ImageView imageView;
+    private Uri photoUri; // Lưu trữ Uri ảnh chất lượng cao
 
     private final ActivityResultLauncher<Intent> cameraResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -30,16 +33,18 @@ public class AddItemActivity extends AppCompatActivity {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        Intent data = result.getData();
-                        if (data != null && data.getExtras() != null) {
-                            Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
+                        try {
+                            // Sử dụng MediaStore để lấy ảnh chất lượng cao
+                            Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
                             imageView.setImageBitmap(imageBitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Toast.makeText(AddItemActivity.this, "Failed to load image", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
             }
     );
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +52,12 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         imageView = findViewById(R.id.imgItemPreview);
-
-        // Các mã xử lý cho insets và các thành phần giao diện khác, nếu cần
     }
 
     public void openCameraForPhoto(View view) {
-        // Kiểm tra quyền truy cập camera
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            // Yêu cầu quyền camera nếu chưa được cấp
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
         } else {
-            // Nếu quyền đã được cấp, mở camera
             launchCamera();
         }
     }
@@ -67,17 +67,23 @@ public class AddItemActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CAMERA_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Quyền camera đã được cấp, mở camera
                 launchCamera();
             } else {
-                // Thông báo nếu quyền không được cấp
                 Toast.makeText(this, "Camera permission is required", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     private void launchCamera() {
+        // Tạo một Uri trong MediaStore để lưu ảnh chất lượng cao
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+        photoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri); // Chuyển Uri vào intent
+
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             cameraResultLauncher.launch(cameraIntent);
         }
