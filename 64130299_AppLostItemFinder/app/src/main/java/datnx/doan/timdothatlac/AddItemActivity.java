@@ -20,13 +20,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.label.ImageLabeling;
+import com.google.mlkit.vision.label.ImageLabeler;
+import com.google.mlkit.vision.label.ImageLabel;
+import com.google.mlkit.vision.label.defaults.ImageLabelerOptions;
+import com.google.mlkit.vision.objects.ObjectDetection;
+import com.google.mlkit.vision.objects.ObjectDetector;
+import com.google.mlkit.vision.objects.defaults.ObjectDetectorOptions;
+import com.google.mlkit.vision.objects.DetectedObject;
+
 import java.io.IOException;
+import java.util.List;
 
 public class AddItemActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private ImageView imageView;
     private Uri photoUri; // Lưu trữ Uri ảnh chất lượng cao
-
     private final ActivityResultLauncher<Intent> cameraResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -37,6 +47,11 @@ public class AddItemActivity extends AppCompatActivity {
                             // Sử dụng MediaStore để lấy ảnh chất lượng cao
                             Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
                             imageView.setImageBitmap(imageBitmap);
+
+                            // Gọi hàm nhận diện nhãn và đối tượng sau khi ảnh được tải lên
+                            labelImage(imageBitmap); // Nhận diện nhãn
+                            detectObjects(imageBitmap); // Nhận diện đối tượng
+
                         } catch (IOException e) {
                             e.printStackTrace();
                             Toast.makeText(AddItemActivity.this, "Failed to load image", Toast.LENGTH_SHORT).show();
@@ -87,5 +102,58 @@ public class AddItemActivity extends AppCompatActivity {
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             cameraResultLauncher.launch(cameraIntent);
         }
+    }
+
+    // Nhận diện nhãn trong ảnh sử dụng Image Labeling
+    private void labelImage(Bitmap imageBitmap) {
+        // Chuyển đổi từ Bitmap sang InputImage để sử dụng với ML Kit
+        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
+
+        // Tạo đối tượng ImageLabelerOptions để cấu hình ML Kit
+        ImageLabelerOptions options = new ImageLabelerOptions.Builder()
+                .setConfidenceThreshold(0.8f)
+                // Đặt ngưỡng độ tin cậy tối thiểu cho nhãn
+                .build();
+
+        // Sử dụng ImageLabeling để nhận diện nhãn
+        ImageLabeler labeler = ImageLabeling.getClient(options);
+
+        // Gọi phương thức process để nhận diện nhãn từ ảnh
+        labeler.process(image)
+                .addOnSuccessListener(labels -> {
+                    // Xử lý nhãn đã nhận diện được
+                    for (ImageLabel label : labels) {
+                        String text = label.getText();  // Tên nhãn
+                        float confidence = label.getConfidence();  // Độ tự tin của nhãn
+                        // Hiển thị kết quả nhận diện
+                        Toast.makeText(AddItemActivity.this, "Label: " + text + ", Confidence: " + confidence, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Xử lý khi nhận diện thất bại
+                    Toast.makeText(AddItemActivity.this, "Labeling failed", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+
+    // Nhận diện đối tượng trong ảnh sử dụng Object Detection
+    private void detectObjects(Bitmap imageBitmap) {
+        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
+        ObjectDetectorOptions options = new ObjectDetectorOptions.Builder()
+                .setDetectorMode(ObjectDetectorOptions.STREAM_MODE) // Chế độ nhận diện liên tục
+                .build();
+        ObjectDetector objectDetector = ObjectDetection.getClient(options);
+
+        objectDetector.process(image)
+                .addOnSuccessListener(detectedObjects -> {
+                    // Hiển thị thông tin các đối tượng phát hiện được
+                    for (DetectedObject detectedObject : detectedObjects) {
+                        // Sử dụng bounding box và các thông tin khác từ detectedObject
+                        Toast.makeText(AddItemActivity.this, "Object detected: " + detectedObject.getTrackingId(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AddItemActivity.this, "Object detection failed", Toast.LENGTH_SHORT).show();
+                });
     }
 }
