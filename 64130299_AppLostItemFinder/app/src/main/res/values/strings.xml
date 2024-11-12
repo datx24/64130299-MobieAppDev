@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Lost Item Finder</string>
+    <string name="item_image_preview">Preview of the item image</string>
 </resources>
