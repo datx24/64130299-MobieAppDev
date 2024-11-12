@@ -62,10 +62,11 @@
             android:id="@+id/btnViewOnMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View on Map"
             android:layout_marginTop="20dp"
-            app:cornerRadius="8dp"
-            app:backgroundTint="@color/button_color"/>
+            android:onClick="goToMapView"
+            android:text="View on Map"
+            app:backgroundTint="@color/button_color"
+            app:cornerRadius="8dp" />
 
         <!-- Nút cập nhật vị trí -->
         <com.google.android.material.button.MaterialButton

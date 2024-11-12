@@ -1,6 +1,8 @@
 package datnx.doan.timdothatlac;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    // Phương thức được gọi khi nhấn vào nút
+    public void goToAddNewItem(View view) {
+        Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+        startActivity(intent);
     }
 }
