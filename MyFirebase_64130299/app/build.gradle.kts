@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "datnx.doan.timdothatlac"
+    namespace = "dat.nx.myfirebase_64130299"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "datnx.doan.timdothatlac"
+        applicationId = "dat.nx.myfirebase_64130299"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
