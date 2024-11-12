@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Placeholder Shape (Rounded Square) -->
+    <path
+        android:fillColor="#CFD8DC"
+        android:pathData="M3,4C3,2.89 3.89,2 5,2H19C20.11,2 21,2.89 21,4V20C21,21.11 20.11,22 19,22H5C3.89,22 3,21.11 3,20V4Z"/>
+
+    <!-- Inner Circle for Item Icon -->
+    <path
+        android:fillColor="#90A4AE"
+        android:pathData="M12,6C10.34,6 9,7.34 9,9C9,10.66 10.34,12 12,12C13.66,12 15,10.66 15,9C15,7.34 13.66,6 12,6Z"/>
+
+    <!-- Bottom Rectangle (Simulating Text or Item Information) -->
+    <rect
+        android:fillColor="#B0BEC5"
+        android:x="6"
+        android:y="14"
+        android:width="12"
+        android:height="2"/>
+
+    <!-- Bottom Smaller Rectangle for Additional Detail -->
+    <rect
+        android:fillColor="#B0BEC5"
+        android:x="6"
+        android:y="17"
+        android:width="8"
+        android:height="2"/>
+
+    <!-- Outer Border (Optional) -->
+    <path
+        android:fillColor="#B0BEC5"
+        android:fillAlpha="0.3"
+        android:strokeColor="#90A4AE"
+        android:strokeWidth="1"
+        android:pathData="M3,4C3,2.89 3.89,2 5,2H19C20.11,2 21,2.89 21,4V20C21,21.11 20.11,22 19,22H5C3.89,22 3,21.11 3,20V4Z"/>
+
+</vector>

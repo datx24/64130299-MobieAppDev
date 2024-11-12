@@ -6,4 +6,6 @@
     <color name="title_color">#3F51B5</color>
     <color name="recycler_background_color">#FFFFFF</color>
     <color name="button_color">#FF4081</color>
+    <color name="item_name_color">#FF6200EE</color>
+    <color name="location_color">#FF018786</color>
 </resources>
