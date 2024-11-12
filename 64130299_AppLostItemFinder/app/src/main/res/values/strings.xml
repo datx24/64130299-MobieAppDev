@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Lost Item Finder</string>
     <string name="item_image_preview">Preview of the item image</string>
-        <string name="item_image">Placeholder image for item</string>
+    <string name="item_image">Placeholder image for item</string>
 </resources>
