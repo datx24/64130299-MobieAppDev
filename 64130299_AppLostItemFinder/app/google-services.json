@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "203996296004",
+    "firebase_url": "https://applostitemfinder-default-rtdb.firebaseio.com",
+    "project_id": "applostitemfinder",
+    "storage_bucket": "applostitemfinder.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203996296004:android:170143f0e7c91ed2b0dd11",
+        "android_client_info": {
+          "package_name": "datnx.doan.timdothatlac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKClsbPwft3WtRLusLEs8gxQvSCKJa-Wg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

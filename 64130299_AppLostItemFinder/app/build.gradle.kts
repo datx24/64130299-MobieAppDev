@@ -35,6 +35,24 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-analytics")
+    // Firebase ML Kit (Object Detection & Image Labeling)
+    implementation ("com.google.mlkit:image-labeling:18.1.3")
+    implementation ("com.google.mlkit:object-detection:17.0.4")
+
+    // Firebase Realtime Database hoặc Firestore
+    implementation ("com.google.firebase:firebase-database")
+    implementation ("com.google.firebase:firebase-firestore")
+
+    // Firebase Authentication
+    implementation ("com.google.firebase:firebase-auth")
+
+    // Google Maps
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
+    implementation ("com.google.android.gms:play-services-location:21.1.0")
+
+    implementation ("com.google.android.material:material:1.10.0")
+    implementation ("org.osmdroid:osmdroid-android:6.1.11")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
