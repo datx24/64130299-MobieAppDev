@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
+
+    <!-- Title -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textColor="@color/primary_color"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Display for result -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="16dp"
+            android:text="0"
+            android:textColor="@color/primary_dark_color"
+            android:textSize="48sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Input fields -->
+
+    <!-- Operation buttons -->
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridOperations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:alignmentMode="alignMargins"
+        app:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilSecondNumber"
+        app:layout_constraintVertical_bias="0.162"
+        app:rowCount="2">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdd"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:backgroundTint="#4CAF50"
+            app:layout_columnWeight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSubtract"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:backgroundTint="#F44336"
+            app:layout_columnWeight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMultiply"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="×"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:backgroundTint="#FF9800"
+            app:layout_columnWeight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDivide"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="÷"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:backgroundTint="#2196F3"
+            app:layout_columnWeight="1" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFirstNumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="26dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFirstNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_first_number"
+            android:inputType="numberDecimal"
+            android:padding="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSecondNumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/tilFirstNumber"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSecondNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_second_number"
+            android:inputType="numberDecimal"
+            android:padding="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

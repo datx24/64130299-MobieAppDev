@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Máy tính số học</string>
+    <string name="hint_first_number">Nhập số thứ nhất</string>
+    <string name="hint_second_number">Nhập số thứ hai</string>
+</resources>
