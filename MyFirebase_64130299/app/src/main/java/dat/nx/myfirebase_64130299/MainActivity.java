@@ -1,5 +1,6 @@
 package dat.nx.myfirebase_64130299;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,12 +49,18 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         saveUserData(user.getUid(), email);
-                        Toast.makeText(MainActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+
+                        // Chuyển sang HomeActivity
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        intent.putExtra("USER_ID", user.getUid());
+                        startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(MainActivity.this, "Đăng ký thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 
     private void loginUser() {
         String email = emailField.getText().toString();
