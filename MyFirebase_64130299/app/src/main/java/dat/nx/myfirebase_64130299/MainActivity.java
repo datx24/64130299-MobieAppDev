@@ -82,16 +82,5 @@ public class MainActivity extends AppCompatActivity {
         mDatabase.child("users").child(userId).setValue(user);
     }
 
-    private void logoutUser() {
-        // Đăng xuất khỏi Firebase
-        mAuth.signOut();
 
-        // Thông báo đăng xuất thành công
-        Toast.makeText(MainActivity.this, "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
-
-        // Quay lại màn hình đăng nhập
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }
