@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 String email = snapshot.child("email").getValue(String.class);
-                welcomeMessage.setText("Welcome, " + email);
+                welcomeMessage.setText("Chào mừng người dùng " + email + " đến với màn hình chính !");
             }
 
             @Override
