@@ -69,12 +69,24 @@ public class MainActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        // Đăng nhập thành công
                         Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+
+                        // Lấy thông tin người dùng hiện tại
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        // Chuyển sang màn hình HomeActivity
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        intent.putExtra("USER_ID", user.getUid());  // Truyền USER_ID qua Intent
+                        startActivity(intent);
+                        finish();  // Kết thúc MainActivity để không quay lại
                     } else {
+                        // Đăng nhập thất bại
                         Toast.makeText(MainActivity.this, "Đăng nhập thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 
     private void saveUserData(String userId, String email) {
         // Tạo một đối tượng User đơn giản

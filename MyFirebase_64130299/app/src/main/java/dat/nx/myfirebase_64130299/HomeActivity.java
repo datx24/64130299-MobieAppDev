@@ -28,11 +28,16 @@ public class HomeActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
         welcomeMessage = findViewById(R.id.welcomeMessage);
+        // Khởi tạo FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
+
         Button logoutButton = findViewById(R.id.logoutButton);  // Nút Đăng xuất
         String userId = getIntent().getStringExtra("USER_ID");
         if (userId != null) {
             loadUserData(userId);
         }
+        // Tìm nút đăng xuất
+        logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(v -> logoutUser());  // Đăng xuất khi nhấn nút
     }
 
