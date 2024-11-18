@@ -1,10 +1,14 @@
 package dat.nx.myfirebase_64130299;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private TextView welcomeMessage;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +28,12 @@ public class HomeActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
         welcomeMessage = findViewById(R.id.welcomeMessage);
-
+        Button logoutButton = findViewById(R.id.logoutButton);  // Nút Đăng xuất
         String userId = getIntent().getStringExtra("USER_ID");
         if (userId != null) {
             loadUserData(userId);
         }
+        logoutButton.setOnClickListener(v -> logoutUser());  // Đăng xuất khi nhấn nút
     }
 
     private void loadUserData(String userId) {
@@ -44,6 +50,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    private void logoutUser() {
+        // Đăng xuất khỏi Firebase
+        mAuth.signOut();
 
+        // Thông báo đăng xuất thành công
+        Toast.makeText(HomeActivity.this, "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
+
+        // Chuyển lại về màn hình đăng nhập (MainActivity)
+        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 }
