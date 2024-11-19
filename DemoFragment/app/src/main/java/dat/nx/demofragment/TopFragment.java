@@ -1,6 +1,7 @@
 package dat.nx.demofragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,8 +36,16 @@ public class TopFragment extends Fragment {
         // Inflate layout for this fragment
         View view = inflater.inflate(R.layout.fragment_top, container, false);
         TextView textView = view.findViewById(R.id.text_top);
-        textView.setText("HELLO FRAGMENT");
+        textView.setText("DEMO FRAGMENT");
         cardView = view.findViewById(R.id.card_view);
+        // Đặt màu mặc định cho CardView
+        cardView.setCardBackgroundColor(Color.parseColor("#FFFFFF")); // Màu trắng mặc định
+        // Xử lý sự kiện chạm vào CardView
+        cardView.setOnClickListener(v -> {
+            // Khi chạm vào CardView, đổi lại màu mặc định (màu trắng)
+            cardView.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+        });
+
         return view;
     }
 
