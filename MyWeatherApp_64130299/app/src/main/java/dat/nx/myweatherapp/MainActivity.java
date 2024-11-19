@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import dat.nx.myweatherapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     WeatherResponse weatherResponse = response.body();
                     // Lấy thông tin thời tiết
-                    String description = weatherResponse.list.get(0).weather.get(0).description;
-                    float temperature = weatherResponse.list.get(0).main.temp;
+                    String description = weatherResponse.weather.get(0).description;
+                    float temperature = weatherResponse.main.temp;
 
                     // Hiển thị kết quả
                     String weatherInfo = "Weather: " + description + "\nTemperature: " + temperature + "°C";
