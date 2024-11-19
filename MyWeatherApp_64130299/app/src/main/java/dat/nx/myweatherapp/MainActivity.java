@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import dat.nx.myweatherapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
