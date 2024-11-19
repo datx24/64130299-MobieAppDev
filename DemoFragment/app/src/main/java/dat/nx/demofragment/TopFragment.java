@@ -18,7 +18,7 @@ public class TopFragment extends Fragment {
         // Inflate layout for this fragment
         View view = inflater.inflate(R.layout.fragment_top, container, false);
         TextView textView = view.findViewById(R.id.text_top);
-        textView.setText("Phần trên: 4/5 màn hình");
+        textView.setText("HELLO FRAGMENT");
         return view;
     }
 }
