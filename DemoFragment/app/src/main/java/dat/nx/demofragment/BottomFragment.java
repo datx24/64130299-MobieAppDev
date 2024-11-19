@@ -17,8 +17,7 @@ public class BottomFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bottom, container, false);
-        TextView textView = view.findViewById(R.id.text_bottom);
-        textView.setText("Phần dưới: 1/5 màn hình");
+
         return view;
     }
 }
