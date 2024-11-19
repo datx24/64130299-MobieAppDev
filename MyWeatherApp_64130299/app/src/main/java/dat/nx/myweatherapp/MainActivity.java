@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         weatherTextView = findViewById(R.id.weatherTextView);
 
         // Gọi API và lấy dữ liệu thời tiết
-        fetchWeatherData("Hanoi", "your_api_key"); // Thay "your_api_key" bằng API key của bạn
+        fetchWeatherData("Hanoi", "9a5d69949e8907e3312061eaf78d19ea");
     }
 
     private void fetchWeatherData(String cityName, String apiKey) {
