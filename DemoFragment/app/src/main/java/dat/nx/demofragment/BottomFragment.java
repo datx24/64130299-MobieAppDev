@@ -28,19 +28,19 @@ public class BottomFragment extends Fragment {
         // Thiết lập sự kiện click cho các nút
         buttonBlue.setOnClickListener(v -> {
             if (getActivity() instanceof TopFragment.OnColorChangeListener) {
-                ((TopFragment.OnColorChangeListener) getActivity()).onColorChange(0x3F51B5);
+                ((TopFragment.OnColorChangeListener) getActivity()).onColorChange(0xFF3F51B5);
             }
         });
 
         buttonGreen.setOnClickListener(v -> {
             if (getActivity() instanceof TopFragment.OnColorChangeListener) {
-                ((TopFragment.OnColorChangeListener) getActivity()).onColorChange(0xFF03DAC5); // Green
+                ((TopFragment.OnColorChangeListener) getActivity()).onColorChange(0xFF4CAF50);
             }
         });
 
         buttonRed.setOnClickListener(v -> {
             if (getActivity() instanceof TopFragment.OnColorChangeListener) {
-                ((TopFragment.OnColorChangeListener) getActivity()).onColorChange(0xFFFF5722); // Red
+                ((TopFragment.OnColorChangeListener) getActivity()).onColorChange(0xFFF44336);
             }
         });
         return view;
