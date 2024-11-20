@@ -12,6 +12,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.label.ImageLabeling;
 import com.google.mlkit.vision.label.ImageLabeler;
@@ -38,9 +42,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class AddItemActivity extends AppCompatActivity {
+    // Khởi tạo Firestore
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private ImageView imageView;
     private Uri photoUri; // Lưu trữ Uri ảnh chất lượng cao
+    private TextInputEditText etItemName, etItemDescription;
+    private MaterialButton btnCaptureImage, btnSaveItem;
     private final ActivityResultLauncher<Intent> cameraResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -69,11 +77,21 @@ public class AddItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
-
+        // Khởi tạo view
+        btnCaptureImage = findViewById(R.id.btnCaptureImage);
+        btnSaveItem = findViewById(R.id.btnSaveItem);
+        etItemName = findViewById(R.id.etItemName);
+        etItemDescription = findViewById(R.id.etItemDescription);
         imageView = findViewById(R.id.imgItemPreview);
+
+
+        // Mở camera khi bấm nút Capture Image
+        btnCaptureImage.setOnClickListener(view -> openCameraForPhoto());
+        // Lưu dữ liệu khi bấm nút Save Item
+        btnSaveItem.setOnClickListener(view -> saveItemToFirestore());
     }
 
-    public void openCameraForPhoto(View view) {
+    public void openCameraForPhoto() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
         } else {
@@ -187,4 +205,38 @@ public class AddItemActivity extends AppCompatActivity {
         imageView.setImageBitmap(mutableBitmap);
     }
 
+    // Lưu thông tin vào Firestore
+    private void saveItemToFirestore() {
+        // Lấy dữ liệu từ giao diện
+        String itemName = etItemName.getText().toString().trim();
+        String itemDescription = etItemDescription.getText().toString().trim();
+        String imageUrl = (photoUri != null) ? photoUri.toString() : "";
+
+        if (itemName.isEmpty() || itemDescription.isEmpty() || imageUrl.isEmpty()) {
+            Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Dữ liệu vị trí giả định
+        double latitude = 10.762622;
+        double longitude = 106.660172;
+        String address = "Đại học Bách Khoa TP.HCM, Quận 10, TP.HCM";
+
+        // Tạo đối tượng để lưu
+        Item item = new Item(itemName, itemDescription, imageUrl, latitude, longitude, address);
+
+        // Thêm vào Firestore
+        db.collection("items")
+                .add(item)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(this, "Item saved successfully!", Toast.LENGTH_SHORT).show();
+                    Log.d("Firestore", "Document ID: " + documentReference.getId());
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error saving item: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("Firestore", "Error", e);
+                });
+    }
 }
+
+
