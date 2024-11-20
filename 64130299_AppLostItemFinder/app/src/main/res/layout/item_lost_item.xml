@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:layout_gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Ảnh đồ vật -->
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/sample_image" />
+
+        <!-- Tên đồ vật -->
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Item Name"
+            android:textSize="18sp"
+            android:textColor="@color/item_name_color"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <!-- Icon chỉnh sửa -->
+        <ImageView
+            android:id="@+id/editItem"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_edit"
+            android:contentDescription="Edit Item"
+            android:layout_marginStart="8dp"
+            android:tint="@color/icon_color"
+            android:onClick="editItem" />
+
+        <!-- Icon xóa -->
+        <ImageView
+            android:id="@+id/deleteItem"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Delete Item"
+            android:layout_marginStart="8dp"
+            android:tint="@color/icon_color"
+            android:onClick="deleteItem" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
