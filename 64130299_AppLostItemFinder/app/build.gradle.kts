@@ -35,11 +35,9 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-analytics")
-    // Firebase ML Kit (Object Detection & Image Labeling)
     implementation ("com.google.mlkit:image-labeling:17.0.9")
     implementation ("com.google.mlkit:object-detection:17.0.2")
 
-    // Firebase Realtime Database hoặc Firestore
     implementation ("com.google.firebase:firebase-database")
     implementation ("com.google.firebase:firebase-firestore")
 
