@@ -5,6 +5,10 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -136,24 +140,51 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
 
-    // Nhận diện đối tượng trong ảnh sử dụng Object Detection
     private void detectObjects(Bitmap imageBitmap) {
+        // Chuyển đổi ảnh Bitmap sang InputImage
         InputImage image = InputImage.fromBitmap(imageBitmap, 0);
+
+        // Tùy chọn phát hiện đối tượng
         ObjectDetectorOptions options = new ObjectDetectorOptions.Builder()
-                .setDetectorMode(ObjectDetectorOptions.STREAM_MODE) // Chế độ nhận diện liên tục
+                .setDetectorMode(ObjectDetectorOptions.SINGLE_IMAGE_MODE) // Chỉ xử lý 1 ảnh
                 .build();
+
+        // Tạo đối tượng ObjectDetector từ ML Kit
         ObjectDetector objectDetector = ObjectDetection.getClient(options);
 
+        // Xử lý ảnh để phát hiện đối tượng
         objectDetector.process(image)
                 .addOnSuccessListener(detectedObjects -> {
                     // Hiển thị thông tin các đối tượng phát hiện được
-                    for (DetectedObject detectedObject : detectedObjects) {
-                        // Sử dụng bounding box và các thông tin khác từ detectedObject
-                        Toast.makeText(AddItemActivity.this, "Object detected: " + detectedObject.getTrackingId(), Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(AddItemActivity.this,
+                            "Số lượng đối tượng phát hiện: " + detectedObjects.size(),
+                            Toast.LENGTH_SHORT).show();
+
+                    // Vẽ bounding box lên ảnh
+                    drawBoundingBoxes(imageBitmap, detectedObjects);
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(AddItemActivity.this, "Object detection failed", Toast.LENGTH_SHORT).show();
+                    // Xử lý lỗi khi nhận diện thất bại
+                    Toast.makeText(AddItemActivity.this,
+                            "Nhận diện đối tượng thất bại: " + e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
                 });
     }
+
+
+    private void drawBoundingBoxes(Bitmap imageBitmap, List<DetectedObject> detectedObjects) {
+        Bitmap mutableBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
+        Canvas canvas = new Canvas(mutableBitmap);
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        paint.setColor(Color.RED);
+
+        for (DetectedObject object : detectedObjects) {
+            Rect boundingBox = object.getBoundingBox();
+            canvas.drawRect(boundingBox, paint);
+        }
+        imageView.setImageBitmap(mutableBitmap);
+    }
+
 }

@@ -62,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Hà Nội"
+            android:text="Nha Trang"
             android:textColor="@color/white"
             android:textSize="30sp" />
 

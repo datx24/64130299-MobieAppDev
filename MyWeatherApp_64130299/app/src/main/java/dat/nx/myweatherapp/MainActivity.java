@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         temperatureTextView = findViewById(R.id.temperatureTextView);
 
         // Lấy dữ liệu thời tiết cho một thành phố cụ thể
-        String cityName = "Hanoi"; // Thay thế bằng tên thành phố mong muốn
+        String cityName = "Nha Trang"; // Thay thế bằng tên thành phố mong muốn
         fetchWeatherData(cityName);
     }
 
