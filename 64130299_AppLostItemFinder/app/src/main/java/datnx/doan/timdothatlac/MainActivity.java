@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Phương thức xử lý sự kiện khi nhấn nút thêm đồ vật
     public void goToAddNewItem(View view) {
+        Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+        startActivity(intent);
         // Chuyển đến Activity để thêm đồ vật mới
     }
 
@@ -52,4 +54,5 @@ public class MainActivity extends AppCompatActivity {
     public void deleteItem(View view) {
         // Xóa đồ vật khỏi Firestore và cập nhật lại RecyclerView
     }
+
 }
