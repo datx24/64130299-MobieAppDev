@@ -146,13 +146,17 @@ public class AddItemActivity extends AppCompatActivity {
                     // Lưu địa chỉ vào cơ sở dữ liệu
                     saveItemToFirestore(latitude, longitude, address);
                 } else {
-                    Toast.makeText(AddItemActivity.this, "Failed to fetch address", Toast.LENGTH_SHORT).show();
+                    String address = null;
+                    Toast.makeText(AddItemActivity.this, "Address not found", Toast.LENGTH_SHORT).show();
+                    saveItemToFirestore(latitude, longitude, address);
                 }
             }
 
             @Override
             public void onFailure(Call<LocationResponse> call, Throwable t) {
+                String address = null;
                 Toast.makeText(AddItemActivity.this, "API Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                saveItemToFirestore(latitude, longitude, address);
             }
         });
     }
