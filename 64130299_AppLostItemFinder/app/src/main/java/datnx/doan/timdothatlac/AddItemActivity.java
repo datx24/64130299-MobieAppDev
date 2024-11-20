@@ -41,10 +41,26 @@ import com.google.mlkit.vision.objects.DetectedObject;
 import java.io.IOException;
 import java.util.List;
 
+import android.location.Location;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+
 public class AddItemActivity extends AppCompatActivity {
     // Khởi tạo Firestore
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    // Truy cập vị trí hiện tại
+    private FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CAMERA_PERMISSION = 100;
+    // Khai báo mã yêu cầu quyền vị trí
+    private static final int REQUEST_LOCATION_PERMISSION = 100;
     private ImageView imageView;
     private Uri photoUri; // Lưu trữ Uri ảnh chất lượng cao
     private TextInputEditText etItemName, etItemDescription;
@@ -87,8 +103,58 @@ public class AddItemActivity extends AppCompatActivity {
 
         // Mở camera khi bấm nút Capture Image
         btnCaptureImage.setOnClickListener(view -> openCameraForPhoto());
-        // Lưu dữ liệu khi bấm nút Save Item
-        btnSaveItem.setOnClickListener(view -> saveItemToFirestore());
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        btnSaveItem.setOnClickListener(view -> getCurrentLocationAndFetchAddress());
+
+    }
+
+    private void getCurrentLocationAndFetchAddress() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+        } else {
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                fetchAddressFromNominatim(location.getLatitude(), location.getLongitude());
+                            } else {
+                                Toast.makeText(AddItemActivity.this, "Không thể xác định vị trí hiện tại", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
+
+    private void fetchAddressFromNominatim(double latitude, double longitude) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://nominatim.openstreetmap.org/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        NominatimApi api = retrofit.create(NominatimApi.class);
+
+        api.getLocation(latitude, longitude, "json").enqueue(new Callback<LocationResponse>() {
+            @Override
+            public void onResponse(Call<LocationResponse> call, Response<LocationResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String address = response.body().getDisplayName();
+                    Toast.makeText(AddItemActivity.this, "Address: " + address, Toast.LENGTH_LONG).show();
+
+                    // Lưu địa chỉ vào cơ sở dữ liệu
+                    saveItemToFirestore(latitude, longitude, address);
+                } else {
+                    Toast.makeText(AddItemActivity.this, "Failed to fetch address", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LocationResponse> call, Throwable t) {
+                Toast.makeText(AddItemActivity.this, "API Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void openCameraForPhoto() {
@@ -206,7 +272,7 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     // Lưu thông tin vào Firestore
-    private void saveItemToFirestore() {
+    private void saveItemToFirestore(double latitude, double longitude, String address) {
         // Lấy dữ liệu từ giao diện
         String itemName = etItemName.getText().toString().trim();
         String itemDescription = etItemDescription.getText().toString().trim();
@@ -217,10 +283,7 @@ public class AddItemActivity extends AppCompatActivity {
             return;
         }
 
-        // Dữ liệu vị trí giả định
-        double latitude = 10.762622;
-        double longitude = 106.660172;
-        String address = "Đại học Bách Khoa TP.HCM, Quận 10, TP.HCM";
+
 
         // Tạo đối tượng để lưu
         Item item = new Item(itemName, itemDescription, imageUrl, latitude, longitude, address);
