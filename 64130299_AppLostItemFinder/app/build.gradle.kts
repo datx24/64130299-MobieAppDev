@@ -39,9 +39,7 @@ dependencies {
     implementation ("com.google.mlkit:object-detection:17.0.2")
     implementation ("com.google.firebase:firebase-database")
     implementation ("com.google.firebase:firebase-firestore")
-    // Firebase Authentication
     implementation ("com.google.firebase:firebase-auth")
-    // Google Maps
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
     implementation ("com.google.android.gms:play-services-location:21.1.0")
     implementation ("com.google.android.material:material:1.10.0")
@@ -49,6 +47,7 @@ dependencies {
     implementation("org.tensorflow:tensorflow-lite:2.3.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.picasso:picasso:2.8")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
