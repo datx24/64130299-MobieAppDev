@@ -1,1 +1,4 @@
 có thể dung gps để điịnh vị đồ đạc
+-để chụp ảnh dung thư viện gì?
+-để nhận diện ảnh làm ??
+-để định vị đồ vật thì làm gì:Để lấy dữ liệu vị trí thực tế từ thư viện OpenStreetMap, bạn có thể sử dụng Nominatim API  ? Lưu dữ lieu ở
