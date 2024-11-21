@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -40,7 +41,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.itemName.setText(currentItem.getName());
         // Cập nhật ảnh của item nếu có
         Picasso.get().load(currentItem.getImageUrl()).into(holder.itemImage);
-
         // Xử lý sự kiện xóa
         holder.deleteItem.setOnClickListener(view -> {
             new AlertDialog.Builder(view.getContext())
@@ -53,17 +53,27 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     private void deleteItemFromFirestore(Item item, int position) {
-        String itemId = item.getId(); 
-
-        firestore.collection("items").document(itemId) // Thay đổi "items" theo tên collection của bạn
-                .delete()
-                .addOnSuccessListener(aVoid -> {
-                    // Xóa khỏi danh sách và cập nhật giao diện
-                    itemList.remove(position);
-                    notifyItemRemoved(position);
-                    Log.d("Firestore", "Xóa thành công vật phẩm: " + itemId);
+        firestore.collection("items")
+                .whereEqualTo("name", item.getName()) // Điều kiện tìm kiếm
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        // Xóa từng tài liệu phù hợp
+                        for (DocumentSnapshot document : queryDocumentSnapshots) {
+                            document.getReference().delete()
+                                    .addOnSuccessListener(aVoid -> {
+                                        // Xóa item khỏi danh sách và cập nhật RecyclerView
+                                        itemList.remove(position);
+                                        notifyItemRemoved(position);
+                                        Log.d("Firestore", "Vật phẩm đã được xóa thành công!");
+                                    })
+                                    .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi xóa tài liệu", e));
+                        }
+                    } else {
+                        Log.d("Firestore", "Không tìm thấy vật phẩm để xóa.");
+                    }
                 })
-                .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi xóa vật phẩm", e));
+                .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi truy vấn", e));
     }
 
     @Override
