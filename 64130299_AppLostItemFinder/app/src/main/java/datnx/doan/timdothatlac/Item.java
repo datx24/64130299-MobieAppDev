@@ -1,6 +1,7 @@
 package datnx.doan.timdothatlac;
 
 public class Item {
+    private String id;
     private String name;
     private String description;
     private String imageUrl;
@@ -9,6 +10,10 @@ public class Item {
     private String address;
 
     public Item() {
+    }
+
+    public String getId() {
+        return id;
     }
 
     public Item(String name, String description, String imageUrl, double latitude, double longitude, String address) {
