@@ -2,4 +2,6 @@
     <string name="app_name">Lost Item Finder</string>
     <string name="item_image_preview">Preview of the item image</string>
     <string name="item_image">Placeholder image for item</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
