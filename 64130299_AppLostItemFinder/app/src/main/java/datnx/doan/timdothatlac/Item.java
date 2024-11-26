@@ -9,7 +9,7 @@ public class Item {
     private double longitude;
     private String address;
 
-    public Item() {
+    public Item(String name, String imageUrl) {
     }
 
     public String getId() {

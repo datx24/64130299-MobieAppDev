@@ -60,7 +60,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         //Xử lý sự kiện bấm vào item để chuyển đến màn hình chi tiết
         holder.itemView.setOnClickListener(view -> {
-            goToItemDetailActivity(view, currentItem);
+            String itemId = currentItem.getId();
+            loadItemDetails(itemId, view);
         });
     }
 
