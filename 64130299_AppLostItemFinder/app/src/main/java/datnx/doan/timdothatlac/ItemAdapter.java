@@ -1,5 +1,8 @@
 package datnx.doan.timdothatlac;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +53,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                     .setNegativeButton("Không", null)
                     .show();
         });
+        //Set data cho từng item
+        holder.itemName.setText(currentItem.getName());
+        Picasso.get().load(currentItem.getImageUrl()).into(holder.itemImage);
+
+        //Xử lý sự kiện bấm vào item để chuyển đến màn hình chi tiết
+        holder.itemView.setOnClickListener(view -> {
+            goToItemDetailActivity(view, currentItem);
+        });
     }
 
     private void deleteItemFromFirestore(Item item, int position) {
@@ -75,6 +86,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 })
                 .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi truy vấn", e));
     }
+
+
 
     @Override
     public int getItemCount() {

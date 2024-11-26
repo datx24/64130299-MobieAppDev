@@ -259,7 +259,6 @@ public class AddItemActivity extends AppCompatActivity {
                 });
     }
 
-
     private void drawBoundingBoxes(Bitmap imageBitmap, List<DetectedObject> detectedObjects) {
         Bitmap mutableBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
         Canvas canvas = new Canvas(mutableBitmap);
@@ -286,8 +285,6 @@ public class AddItemActivity extends AppCompatActivity {
             Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
 
         // Tạo đối tượng để lưu
         Item item = new Item(itemName, itemDescription, imageUrl, latitude, longitude, address);
