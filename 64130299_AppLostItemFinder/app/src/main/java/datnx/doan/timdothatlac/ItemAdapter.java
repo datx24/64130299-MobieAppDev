@@ -100,6 +100,26 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi truy vấn", e));
     }
 
+    private void loadItemDetails(String itemId,View view) {
+        firestore.collection("items").document(itemId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if(documentSnapshot.exists()){
+                        //Lấy thông tin từ Firestore
+                        String name = documentSnapshot.getString("name");
+                        String imageUrl = documentSnapshot.getString("imageUrl");
+
+                        //Tạo 1 item từ dữ liệu nhận được
+                        Item currentItem = new Item(name, imageUrl);
+
+                        //Chuyển đến ItemDetailActivity
+                        goToItemDetailActivity(view, currentItem);
+                    } else {
+                        Log.e("Firestore","Document không tồn tại");
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("Firestore","Lỗi khi lấy dữ liệu",e));
+    }
 
 
     @Override
