@@ -289,18 +289,22 @@ public class AddItemActivity extends AppCompatActivity {
         // Tạo đối tượng để lưu
         Item item = new Item(itemName, itemDescription, imageUrl, latitude, longitude, address);
 
+        // Tạo ID cho tài liệu
+        String documentId = db.collection("items").document().getId();
+        item.setId(documentId);
         // Thêm vào Firestore
-        db.collection("items")
-                .add(item)
-                .addOnSuccessListener(documentReference -> {
+        db.collection("items").document(documentId)
+                .set(item)
+                .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Item saved successfully!", Toast.LENGTH_SHORT).show();
-                    Log.d("Firestore", "Document ID: " + documentReference.getId());
+                    Log.d("Firestore", "Document ID: " + documentId);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error saving item: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     Log.e("Firestore", "Error", e);
                 });
     }
+
 }
 
 

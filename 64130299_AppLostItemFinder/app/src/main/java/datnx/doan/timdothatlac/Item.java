@@ -16,6 +16,10 @@ public class Item {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Item(String name, String description, String imageUrl, double latitude, double longitude, String address) {
         this.name = name;
         this.description = description;
