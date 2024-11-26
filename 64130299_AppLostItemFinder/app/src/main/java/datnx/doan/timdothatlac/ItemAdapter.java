@@ -2,6 +2,7 @@ package datnx.doan.timdothatlac;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,6 +62,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.itemView.setOnClickListener(view -> {
             goToItemDetailActivity(view, currentItem);
         });
+    }
+
+    private void goToItemDetailActivity(View view, Item currentItem) {
+        Context context = view.getContext();
+        Intent intent = new Intent(context, ItemDetailActivity.class);
+
+        //Truyền thông tin vật phẩm vào intent
+        intent.putExtra("name",currentItem.getName());
+        intent.putExtra("imageUrl",currentItem.getImageUrl());
+
+        //Khởi động acticity
+        context.startActivity(intent);
     }
 
     private void deleteItemFromFirestore(Item item, int position) {
