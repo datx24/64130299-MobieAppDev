@@ -58,6 +58,7 @@
             android:textColor="@color/location_color"/>
 
         <!-- Nút xem vị trí trên bản đồ -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnViewOnMap"
             android:layout_width="match_parent"
@@ -73,10 +74,10 @@
             android:id="@+id/btnUpdateLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Location"
             android:layout_marginTop="10dp"
-            app:cornerRadius="8dp"
-            app:backgroundTint="@color/button_color"/>
+            android:text="Update Location"
+            app:backgroundTint="@color/button_color"
+            app:cornerRadius="8dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
