@@ -88,14 +88,6 @@ public class MainActivity extends AppCompatActivity {
         // Chuyển đến Activity để thêm đồ vật mới
     }
 
-    // Phương thức xử lý chỉnh sửa đồ vật
-    public void editItem(View view) {
-        // Chỉnh sửa thông tin đồ vật trong Firestore
-    }
-
-    // Phương thức xử lý xóa đồ vật
-    public void deleteItem(View view) {
-        // Xóa đồ vật khỏi Firestore và cập nhật lại RecyclerView
-    }
+    
 
 }
