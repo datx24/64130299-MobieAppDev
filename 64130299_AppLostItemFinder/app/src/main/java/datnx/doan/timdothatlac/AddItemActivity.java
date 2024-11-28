@@ -59,7 +59,7 @@ public class AddItemActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private static final int REQUEST_LOCATION_PERMISSION = 100;
     private ImageView imageView;
-    private Uri photoUrl;  //đại diện cho 1 địa chỉ hình ảnh
+    private Uri photoUri;  //đại diện cho 1 địa chỉ hình ảnh
     private TextInputEditText etItemName,etItemDescription;
     private MaterialButton btnCaptureImage, btnSaveItem;
     private FusedLocationProviderClient fusedLocationProviderClient; // biến để truy cập vị trí đồ vật
@@ -102,6 +102,25 @@ public class AddItemActivity extends AppCompatActivity {
         } else {
             //Nếu có gọi hàm để mở camera
             launchCamera();
+        }
+    }
+
+    //Phương thức mở camera
+    private void launchCamera() {
+        //Tạo 1 đối tượng ContentValues để lưu thông tin ảnh
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.Images.Media.TITLE, "NEW PICTURE");//Đặt tiêu đề ảnh
+        contentValues.put(MediaStore.Images.Media.DESCRIPTION, "FROM CAMERA");//Đặt mô tả cho ảnh
+        //Chèn thông tin ảnh vào MediaStore và lấy URI của hình ảnh
+        photoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+        //Tạo Intent để mở camera
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //Gắn uri của ảnh vào intent để lưu ảnh đã chụp
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+        //Kiểm tra xem ứng dụng nào có thể xử lý được Intent này
+        if(cameraIntent.resolveActivity(getPackageManager()) != null){
+            //Chạy camera và chờ kết quả
+            cameraResultLaucher.launch(cameraIntent);
         }
     }
 
