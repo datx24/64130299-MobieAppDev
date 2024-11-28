@@ -106,7 +106,7 @@ public class AddItemActivity extends AppCompatActivity {
                         //Kiểm tra xem vị trí có khác null không
                         if(location != null) {
                             //Lưu thông tin vị trí (vĩ độ, kinh độ) vào cơ sở dữ liệu SQLite
-                            saveItemToSQLite(location.getLatitude(),location.getLongitude(), null)l
+                            saveItemToSQLite(location.getLatitude(),location.getLongitude(), null);
                         } else {
                             //Hiển thị thông báo lỗi nếu như không xác định vị trí hiện tại
                             Toast.makeText(AddItemActivity.this,"Không thể xác định vị trí hiện tại",Toast.LENGTH_SHORT).show();
