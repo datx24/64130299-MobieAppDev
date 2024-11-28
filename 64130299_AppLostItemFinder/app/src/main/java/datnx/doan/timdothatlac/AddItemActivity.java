@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -54,7 +55,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class AddItemActivity extends AppCompatActivity {
-  
+    private static final int REQUEST_CAMERA_PERMISSION = 100;
+    private static final int REQUEST_LOCATION_PERMISSION = 100;
+    private ImageView imageView;
+    private Uri photoUrl;  //đại diện cho 1 địa chỉ hình ảnh
+    private TextInputEditText etItemName,etItemDescription;
+    private MaterialButton btnCaptureImage, btnSaveItem;
+    private FusedLocationProviderClient fusedLocationProviderClient; // biến để truy cập vị trí đồ vật
+
+    //sqllite db helper
+    private SQLiteDatabase db;
+    private DatabaseHelper dbHelper;
+
 }
 
 

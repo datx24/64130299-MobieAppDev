@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "Items";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_IMAGE = "image";
+    public static final String COLUMN_IMAGE_URL = "image_url";
     public static final String COLUMN_ADDRESS = "address";
     public static final String COLUMN_LATITUDE = "latitude";
     public static final String COLUMN_LONGITUDE = "longitude";
@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NAME + " TEXT, " +
-                    COLUMN_IMAGE + " TEXT, " +
+                    COLUMN_IMAGE_URL + " TEXT, " +
                     COLUMN_ADDRESS + " TEXT, " +
                     COLUMN_LATITUDE + " REAL, " +
                     COLUMN_LONGITUDE + " REAL, " +
