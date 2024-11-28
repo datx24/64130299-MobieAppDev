@@ -93,6 +93,17 @@ public class AddItemActivity extends AppCompatActivity {
         //Thiết lập sự kiện cho nút lưu đồ vật
         btnSaveItem.setOnClickListener(view -> getCurrentLocationAndSaveItem);
     }
+    //Phương thức kiểm tra quyền truy cập để mở camera
+    private void openCameraForPhoto() {
+        //Kiểm tra xem ứng dụng đã có quyền truy cập hay chưa
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            //Nếu chưa có thì yêu cầu truy cập
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},REQUEST_CAMERA_PERMISSION);
+        } else {
+            //Nếu có gọi hàm để mở camera
+            launchCamera();
+        }
+    }
 
     //Hàm xử lý kết quả từ việc chụp ảnh
     private final ActivityResultLauncher<Intent> cameraResultLaucher = registerForActivityResult(
