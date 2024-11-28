@@ -93,7 +93,7 @@ public class AddItemActivity extends AppCompatActivity {
         btnSaveItem.setOnClickListener(view -> getCurrentLocationAndSaveItem());
     }
 
-    //Hàm để lấy vị trí hiện tại và lưu thông tin đồ vật
+    //Hàm để lấy vị trí hiện tại và gọi phương thức để lưu thông tin đồ vật
     private void getCurrentLocationAndSaveItem() {
         //Kiểm tra xem ứng dụng đã có quyền truy cập chưa
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -113,6 +113,10 @@ public class AddItemActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    //Hàm lưu thông tin đồ vật
+    private void saveItemToSQLite(double latitude, double longitude, String address) {
     }
 
     //Phương thức kiểm tra quyền truy cập để mở camera
