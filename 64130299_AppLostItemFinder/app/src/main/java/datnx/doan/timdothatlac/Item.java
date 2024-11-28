@@ -1,50 +1,60 @@
 package datnx.doan.timdothatlac;
 
+
 public class Item {
-    private String id;
+    private int id;
     private String name;
     private String description;
     private String imageUrl;
+    private String address;
     private double latitude;
     private double longitude;
-    private String address;
+    private String timestamp;
 
-    public Item(String name, String imageUrl) {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
+    // Constructor
+    public Item(int id, String name, String description, String imageUrl, String address, double latitude, double longitude, String timestamp) {
         this.id = id;
-    }
-
-    public Item(String name, String description, String imageUrl, double latitude, double longitude, String address) {
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.address = address;
+        this.timestamp = timestamp;
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    // Getters and setters (optional)
+    public int getId() {
+        return id;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getName() {
+        return name;
+    }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public String getDescription() {
+        return description;
+    }
 
-    public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-    public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public String getAddress() {
+        return address;
+    }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
 }
+
 
