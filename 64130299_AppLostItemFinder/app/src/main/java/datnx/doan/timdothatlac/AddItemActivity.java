@@ -117,6 +117,39 @@ public class AddItemActivity extends AppCompatActivity {
 
     //Hàm lưu thông tin đồ vật
     private void saveItemToSQLite(double latitude, double longitude, String address) {
+        //Lấy tên và mô tả từ các ô nhập
+        String itemName = etItemName.getText().toString().trim();
+        String itemDescription = etItemDescription.getText().toString().trim();
+        //Lấy url hình ảnh nếu có
+        String imageUrl = (photoUri != null) ? photoUri.toString() : "";
+        //Kiểm tra xem tên,mô tả và hình ảnh có rỗng hay không
+        if(itemName.isEmpty() || itemDescription.isEmpty() || imageUrl.isEmpty()) {
+            //Hiển thị thông báo lỗi
+            Toast.makeText(this, "Các ô nhập không được rỗng !",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Tạo đối tượng ContentValues để lưu thông tin items
+        ContentValues values = new ContentValues();
+        values.put("name",itemName);
+        values.put("description",itemDescription);
+        values.put("image_url",imageUrl);
+        values.put("address",address);
+        values.put("latitude",latitude);
+        values.put("longitude",longitude);
+        //Lấy thời gian hiện tại và thêm vào ContentValues
+        long timestamp = System.currentTimeMillis();
+        values.put("timestamp",timestamp);
+
+        //Chèn thông tin vào cơ sở dữ liệu và ID của hàng mới
+        long newRowId = db.insert("items", null, values);
+
+        //Kiểm tra việc chèn dữ liệu có thành công hay không
+        if(newRowId != -1) {
+            Toast.makeText(this,"Lưu thành công", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this,"Xảy ra lỗi khị lưu", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Phương thức kiểm tra quyền truy cập để mở camera
