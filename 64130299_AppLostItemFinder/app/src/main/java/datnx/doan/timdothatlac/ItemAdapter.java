@@ -20,15 +20,21 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private List<Item> itemList;
-    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    private Context context;
+    private SQLiteDatabase db;
+    private DatabaseHelper dbHelper;
 
-    public ItemAdapter(List<Item> itemList) {
-        this.itemList = itemList;
+    public ItemAdapter(Context context) {
+        this.context = context;
+        dbHelper = new DatabaseHelper(context);//Khởi tạo database
+        db = dbHelper.getWritableDatabase();//Lấy cơ sở dữ liệu để ghi
+        this.itemList = dbHelper.getAllItems();
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //Tạo ViewHolder cho từng item trong RecyclerView
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lost_item, parent, false);
         return new ItemViewHolder(itemView);
     }
@@ -46,18 +52,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             new AlertDialog.Builder(view.getContext())
                     .setTitle("Xác nhận xóa")
                     .setMessage("Bạn có chắc chắn muốn xóa vật phẩm này không?")
-                    .setPositiveButton("Có", (dialog, which) -> deleteItemFromFirestore(currentItem, position))
+                    .setPositiveButton("Có", (dialog, which) -> deleteItemFromDatabase(currentItem, position))
                     .setNegativeButton("Không", null)
                     .show();
         });
-        //Set data cho từng item
-        holder.itemName.setText(currentItem.getName());
-        Picasso.get().load(currentItem.getImageUrl()).into(holder.itemImage);
-
         //Xử lý sự kiện bấm vào item để chuyển đến màn hình chi tiết
         holder.itemView.setOnClickListener(view -> {
-            String itemId = currentItem.getId();
-            loadItemDetails(itemId, view);
+            goToItemDetailActivity(view,currentItem);
         });
     }
 
@@ -73,51 +74,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         context.startActivity(intent);
     }
 
-    private void deleteItemFromFirestore(Item item, int position) {
-        firestore.collection("items")
-                .whereEqualTo("name", item.getName()) // Điều kiện tìm kiếm
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        // Xóa từng tài liệu phù hợp
-                        for (DocumentSnapshot document : queryDocumentSnapshots) {
-                            document.getReference().delete()
-                                    .addOnSuccessListener(aVoid -> {
-                                        // Xóa item khỏi danh sách và cập nhật RecyclerView
-                                        itemList.remove(position);
-                                        notifyItemRemoved(position);
-                                        Log.d("Firestore", "Vật phẩm đã được xóa thành công!");
-                                    })
-                                    .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi xóa tài liệu", e));
-                        }
-                    } else {
-                        Log.d("Firestore", "Không tìm thấy vật phẩm để xóa.");
-                    }
-                })
-                .addOnFailureListener(e -> Log.e("Firestore", "Lỗi khi truy vấn", e));
+    private void deleteItemFromDatabase(Item item, int position) {
+        //Xác định item cần xóa
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(item.getId())};
+        //Thực hiện xóa item ra khỏi cơ sở dữ liệu
+        int deleteRow = db.delete(DatabaseHelper.TABLE_NAME,selection, selectionArgs);
+        if(deleteRow > 0) {
+            //Xóa thành công sẽ cập nhật lại danh sách
+            itemList.remove(position);
+            notifyItemRemoved(position);
+        }
     }
-
-    private void loadItemDetails(String itemId,View view) {
-        firestore.collection("items").document(itemId)
-                .get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if(documentSnapshot.exists()){
-                        //Lấy thông tin từ Firestore
-                        String name = documentSnapshot.getString("name");
-                        String imageUrl = documentSnapshot.getString("imageUrl");
-
-                        //Tạo 1 item từ dữ liệu nhận được
-                        Item currentItem = new Item(name, imageUrl);
-
-                        //Chuyển đến ItemDetailActivity
-                        goToItemDetailActivity(view, currentItem);
-                    } else {
-                        Log.e("Firestore","Document không tồn tại");
-                    }
-                })
-                .addOnFailureListener(e -> Log.e("Firestore","Lỗi khi lấy dữ liệu",e));
-    }
-
 
     @Override
     public int getItemCount() {
