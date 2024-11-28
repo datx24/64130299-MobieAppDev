@@ -160,7 +160,7 @@ public class AddItemActivity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK) {
                         try {
                             //Lấy hình ảnh từ URL
-                            Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUrl);
+                            Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
 
                             //Hiển thị ảnh lên imageView
                             imageView.setImageBitmap(imageBitmap);
