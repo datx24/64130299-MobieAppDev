@@ -33,13 +33,6 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-    implementation("com.google.firebase:firebase-analytics")
-    implementation ("com.google.mlkit:image-labeling:17.0.9")
-    implementation ("com.google.mlkit:object-detection:17.0.2")
-    implementation ("com.google.firebase:firebase-database")
-    implementation ("com.google.firebase:firebase-firestore")
-    implementation ("com.google.firebase:firebase-auth")
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
     implementation ("com.google.android.gms:play-services-location:21.1.0")
     implementation ("com.google.android.material:material:1.10.0")
