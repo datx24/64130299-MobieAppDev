@@ -67,6 +67,30 @@ public class AddItemActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private DatabaseHelper dbHelper;
 
+    //Hàm xử lý kết quả từ việc chụp ảnh
+    private final ActivityResultLauncher<Intent> cameraResultLaucher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),// dùng để khởi động và nhận kết quả
+            new ActivityResultCallback<ActivityResult>() { // định nghĩa callback để xử lý kết quả
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    //Kiểm tra kết quả trả về thành công hay không
+                    if (result.getResultCode() == RESULT_OK) {
+                        try {
+                            //Lấy hình ảnh từ URL
+                            Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUrl);
+
+                            //Hiển thị ảnh lên imageView
+                            imageView.setImageBitmap(imageBitmap);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            //Hiển thị thông báo lỗi cho người dùng
+                            Toast.makeText(AddItemActivity.this, "Load ảnh không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+    );
 }
 
 
