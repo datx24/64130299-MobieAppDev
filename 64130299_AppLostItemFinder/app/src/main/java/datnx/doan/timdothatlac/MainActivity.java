@@ -9,8 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
+    private RecyclerView recyclerView; //khai báo RecycleView hiển thị danh sách đồ vật
+    private ItemAdapter adapter;
+    private List<Item> itemList;
+    private DatabaseHelper dbHelper; // khai báo đối tượng để tương tác với cơ sở dữ liệu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
