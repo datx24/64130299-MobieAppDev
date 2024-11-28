@@ -26,7 +26,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -91,8 +90,31 @@ public class AddItemActivity extends AppCompatActivity {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         //Thiết lập sự kiện cho nút lưu đồ vật
-        btnSaveItem.setOnClickListener(view -> getCurrentLocationAndSaveItem);
+        btnSaveItem.setOnClickListener(view -> getCurrentLocationAndSaveItem());
     }
+
+    //Hàm để lấy vị trí hiện tại và lưu thông tin đồ vật
+    private void getCurrentLocationAndSaveItem() {
+        //Kiểm tra xem ứng dụng đã có quyền truy cập chưa
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            //Nếu chưa có quyền, yêu cầu truy cập vị trí
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION_PERMISSION);
+        } else {
+            //Nếu đã có quyền, lấy vị trí hiện tại của thiết bị
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(location -> {
+                        //Kiểm tra xem vị trí có khác null không
+                        if(location != null) {
+                            //Lưu thông tin vị trí (vĩ độ, kinh độ) vào cơ sở dữ liệu SQLite
+                            saveItemToSQLite(location.getLatitude(),location.getLongitude(), null)l
+                        } else {
+                            //Hiển thị thông báo lỗi nếu như không xác định vị trí hiện tại
+                            Toast.makeText(AddItemActivity.this,"Không thể xác định vị trí hiện tại",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
+
     //Phương thức kiểm tra quyền truy cập để mở camera
     private void openCameraForPhoto() {
         //Kiểm tra xem ứng dụng đã có quyền truy cập hay chưa
