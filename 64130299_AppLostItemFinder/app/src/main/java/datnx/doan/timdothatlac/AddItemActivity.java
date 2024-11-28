@@ -22,6 +22,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -67,6 +68,32 @@ public class AddItemActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private DatabaseHelper dbHelper;
 
+    @Override
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_item);
+
+        //Khởi tạo các thành phần trong giao diện
+        btnCaptureImage = findViewById(R.id.btnCaptureImage); //Nút chụp ảnh
+        btnSaveItem = findViewById(R.id.btnSaveItem); //Nút lưu item
+        etItemName = findViewById(R.id.etItemName); //Ô nhập tên item
+        etItemDescription = findViewById(R.id.etItemDescription); //Ô nhập mô tả item
+        imageView = findViewById(R.id.imgItemPreview);//Vùng hiển thị hình ảnh đã chụp
+
+        //tạo đối đượng để thao tác ghi dữ liệu
+        dbHelper = new DatabaseHelper(this);
+        db = dbHelper.getWritableDatabase();
+
+        //Thiết lập sự kiện cho nút chụp ảnh
+        btnCaptureImage.setOnClickListener(view -> openCameraForPhoto());
+
+        //Khởi tạo đối tượng để lấy vị trí của item hiện tại
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        //Thiết lập sự kiện cho nút lưu đồ vật
+        btnSaveItem.setOnClickListener(view -> getCurrentLocationAndSaveItem);
+    }
+
     //Hàm xử lý kết quả từ việc chụp ảnh
     private final ActivityResultLauncher<Intent> cameraResultLaucher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),// dùng để khởi động và nhận kết quả
@@ -91,6 +118,8 @@ public class AddItemActivity extends AppCompatActivity {
                 }
             }
     );
+
+
 }
 
 
