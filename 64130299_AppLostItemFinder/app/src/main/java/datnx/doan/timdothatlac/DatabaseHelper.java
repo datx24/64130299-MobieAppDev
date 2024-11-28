@@ -1,10 +1,16 @@
 package datnx.doan.timdothatlac;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     //Tên csdl
@@ -51,5 +57,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Xóa bảng cũ
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    //Phương thức trả về danh sách đồ vật trong csdl SQlite
+    public List<Item> getAllItems() {
+        List<Item> itemList = new ArrayList<>(); // biến lưu trữ danh sách các đồ vật
+        SQLiteDatabase db = this.getReadableDatabase(); //biến đọc dữ liệu
+
+        //Thực hiện truy vấn lấy tất cả dữ liệu từ bản ghi
+        Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null);
+
+        //Kiểm tra xem có cursor nào khác null không
+        if(cursor != null) {
+            //Duyệt tất cả bản ghi trong cursor
+            while (cursor.moveToNext()) {
+                //Lấy giá trị của các cột từ cursor
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+                @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE_URL));
+                @SuppressLint("Range") String address = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS));
+                @SuppressLint("Range") double latitude = cursor.getDouble((int) cursor.getDouble(cursor.getColumnIndex(COLUMN_LATITUDE)));
+                @SuppressLint("Range") double longitude = cursor.getDouble(cursor.getColumnIndex(COLUMN_LONGITUDE));
+                @SuppressLint("Range") String timestamp = cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP));
+                //Tạo đối tương Item để thêm vào danh sách
+                Item item = new Item(id,name,description,imageUrl,address,latitude,longitude,timestamp);
+                itemList.add(item);
+            }
+            cursor.close();
+        }
+        db.close();
+        return itemList;
     }
 }
