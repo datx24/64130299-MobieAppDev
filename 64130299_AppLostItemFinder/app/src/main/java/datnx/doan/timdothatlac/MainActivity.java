@@ -21,8 +21,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Tạo RecycleView và thiết lập LayoutManager
+        recyclerView = findViewById(R.id.recyclerViewItems);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Khởi tạo databaseHelper để tương tác với cơ sở dữ liệu
+        dbHelper = new DatabaseHelper(this);
+
+        //Lấy toàn bộ item từ cơ sở dữ liệu
+        itemList = dbHelper.getAllItems();
+
+        //Tạo và gán Adapter cho RecyclerView
+        adapter = new ItemAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+        //Kiểm tra xem danh sách có rỗng không và hiển thị thông báo nếu rỗng
+        if(itemList.isEmpty()) {
+            Toast.makeText(this,"Không có danh sách đồ vật trong cơ sở dữ liệu !",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
+    //Phương thức chuyển sang màn hình thêm đồ vật
     public void goToAddNewItem(View view) {
         Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
         startActivity(intent);
