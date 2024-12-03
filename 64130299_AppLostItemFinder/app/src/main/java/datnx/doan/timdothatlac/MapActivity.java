@@ -1,16 +1,13 @@
 package datnx.doan.timdothatlac;
 
-import static android.view.View.*;
-import static android.view.View.VISIBLE;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -26,8 +23,13 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_map);
+
+        // Kiểm tra và yêu cầu quyền
+        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
+        }
 
         //Nhận dữ liệu từ Intent
         latitude = getIntent().getDoubleExtra("latitude",0);
@@ -40,7 +42,7 @@ public class MapActivity extends AppCompatActivity {
         mapView.setMultiTouchControls(true);
 
         //Tùy chọn ẩn điều khển zoom sau 1 thòi gian không tương tác
-        mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.SHOW_AND_FADEOUT);
+        mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.ALWAYS);
 
         //Di chuyển camera đến vị trí đồ vật
         GeoPoint itemLocation = new GeoPoint(latitude,longitude);
