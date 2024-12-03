@@ -43,7 +43,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item currentItem = itemList.get(position);
 
-        // Set OnClickListener for the item view
+        // Gán tên đồ vật vào TextView
+        holder.itemName.setText(currentItem.getName());
+
+        // Gán ảnh vào ImageView sử dụng Picasso (hoặc Glide)
+        if (currentItem.getImageUrl() != null && !currentItem.getImageUrl().isEmpty()) {
+            Picasso.get().load(currentItem.getImageUrl()).into(holder.itemImage);
+        } else {
+            // Nếu không có ảnh, có thể đặt ảnh mặc định
+            holder.itemImage.setImageResource(R.drawable.ic_camera_placeholder);
+        }
+
+        // Các sự kiện click khác nếu cần
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ItemDetailActivity.class);
             intent.putExtra("name", currentItem.getName());
@@ -67,6 +78,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                     .show();
         });
     }
+
     @Override
     public int getItemCount() {
         return itemList != null ? itemList.size() : 0;
