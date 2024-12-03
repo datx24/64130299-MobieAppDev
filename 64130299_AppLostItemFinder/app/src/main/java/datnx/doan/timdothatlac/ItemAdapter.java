@@ -24,11 +24,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     private SQLiteDatabase db;
     private DatabaseHelper dbHelper;
 
-    public ItemAdapter(Context context) {
+    public ItemAdapter(Context context,List<Item> itemList) {
         this.context = context;
-        dbHelper = new DatabaseHelper(context);//Khởi tạo database
-        db = dbHelper.getWritableDatabase();//Lấy cơ sở dữ liệu để ghi
-        this.itemList = dbHelper.getAllItems();
+        this.itemList = itemList;
     }
 
     @NonNull
