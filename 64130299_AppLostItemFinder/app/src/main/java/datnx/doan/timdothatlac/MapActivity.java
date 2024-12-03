@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
@@ -39,5 +40,11 @@ public class MapActivity extends AppCompatActivity {
 
         //Tùy chọn ẩn điều khển zoom sau 1 thòi gian không tương tác
         mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.SHOW_AND_FADEOUT);
+
+        //Di chuyển camera đến vị trí đồ vật
+        GeoPoint itemLocation = new GeoPoint(latitude,longitude);
+        IMapController mapController = mapView.getController();
+        mapController.setCenter(itemLocation);
+        mapController.setZoom(15.0);
     }
 }
