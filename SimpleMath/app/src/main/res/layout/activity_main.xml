@@ -104,41 +104,46 @@
                 tools:layout_editor_absoluteX="130dp"
                 tools:layout_editor_absoluteY="240dp" />
 
-            <RadioButton
-                android:id="@+id/radioButtonPlus"
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cộng"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="130dp"
-                tools:layout_editor_absoluteY="273dp" />
+                android:layout_height="match_parent" >
 
-            <RadioButton
-                android:id="@+id/radioButtonSubtract"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Trừ"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="130dp"
-                tools:layout_editor_absoluteY="321dp" />
+                <RadioButton
+                    android:id="@+id/radioButtonPlus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cộng"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="130dp"
+                    tools:layout_editor_absoluteY="273dp" />
 
-            <RadioButton
-                android:id="@+id/radioButtonMultiplication"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nhân"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="130dp"
-                tools:layout_editor_absoluteY="369dp" />
+                <RadioButton
+                    android:id="@+id/radioButtonSubtract"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trừ"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="130dp"
+                    tools:layout_editor_absoluteY="321dp" />
 
-            <RadioButton
-                android:id="@+id/radioButtonDivide"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Chia"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="130dp"
-                tools:layout_editor_absoluteY="417dp" />
+                <RadioButton
+                    android:id="@+id/radioButtonMultiplication"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nhân"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="130dp"
+                    tools:layout_editor_absoluteY="369dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonDivide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chia"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="130dp"
+                    tools:layout_editor_absoluteY="417dp" />
+            </RadioGroup>
 
         </LinearLayout>
 
