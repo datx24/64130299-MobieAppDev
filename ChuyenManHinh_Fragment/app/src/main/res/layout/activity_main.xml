@@ -5,56 +5,76 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background_gradient">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tiếng Anh" />
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#6B48FF"
+                android:padding="16dp"
+                android:text="Tiếng Anh"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Toán" />
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#F59159"
+                android:backgroundTintMode="screen"
+                android:padding="16dp"
+                android:text="Toán"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lập trình" />
+                android:backgroundTint="#E84A5F"
+                android:padding="16dp"
+                android:text="Lập trình"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="158dp"
-            android:layout_marginBottom="115dp"
+            android:layout_marginTop="32dp"
             android:text="Trắc nghiệm"
+            android:textColor="#FFFF00"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -67,11 +87,10 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="109dp"
-            android:layout_marginBottom="164dp"
+            android:layout_marginTop="112dp"
             android:text="Mang đến kiến thức bổ ích"
+            android:textColor="#EEEEEE"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
