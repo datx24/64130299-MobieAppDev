@@ -41,14 +41,15 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="Nhập số thứ nhất"
                 android:inputType="text"
-                android:text="Nhập số thứ nhất"
                 tools:layout_editor_absoluteX="75dp"
                 tools:layout_editor_absoluteY="163dp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -73,12 +74,57 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Nhập số thứ hai
+                android:hint="Nhập số thứ hai
 "
+                android:inputType="text"
                 tools:layout_editor_absoluteX="75dp"
                 tools:layout_editor_absoluteY="231dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:layout_marginTop="28dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn phép toán"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cộng" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trừ" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nhân" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chia" />
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
