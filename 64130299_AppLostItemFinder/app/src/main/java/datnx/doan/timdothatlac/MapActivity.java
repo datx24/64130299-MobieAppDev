@@ -88,6 +88,16 @@ public class MapActivity extends AppCompatActivity {
         },1000);
     }
 
+    private void speakDistance(float distance) {
+        String distanceText;
+        if(distance < 1000) {
+            distanceText = String.format(Locale.getDefault(),"Bạn cách vị trí đồ vật %.0f mét");
+        } else {
+            distanceText = String.format(Locale.getDefault(),"Bạn cách vị trí đồ vật %.0f km");
+        }
+        textToSpeech.speak(distanceText, TextToSpeech.QUEUE_FLUSH, null,null);
+    }
+
     //Phương thức lấy vị trí hiện tại
     private void fetchCurrentLocation() {
         if (ContextCompat.checkSelfPermission(this,ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
