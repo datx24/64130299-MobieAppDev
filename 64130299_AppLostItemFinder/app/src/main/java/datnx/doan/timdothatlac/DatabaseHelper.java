@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -61,32 +62,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Phương thức trả về danh sách đồ vật trong csdl SQlite
     public List<Item> getAllItems() {
-        List<Item> itemList = new ArrayList<>(); // biến lưu trữ danh sách các đồ vật
-        SQLiteDatabase db = this.getReadableDatabase(); //biến đọc dữ liệu
+        List<Item> itemList = new ArrayList<>(); // Tạo danh sách lưu các đồ vật
+        SQLiteDatabase db = this.getReadableDatabase(); // Lấy cơ sở dữ liệu ở chế độ đọc
 
-        //Thực hiện truy vấn lấy tất cả dữ liệu từ bản ghi
-        Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null);
+        // Thực hiện truy vấn để lấy toàn bộ dữ liệu từ bảng Items
+        Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
 
-        //Kiểm tra xem có cursor nào khác null không
-        if(cursor != null) {
-            //Duyệt tất cả bản ghi trong cursor
+        // Kiểm tra nếu con trỏ không null
+        if (cursor != null) {
+            // Duyệt qua từng hàng trong bảng
             while (cursor.moveToNext()) {
-                //Lấy giá trị của các cột từ cursor
-                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
-                @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE_URL));
-                @SuppressLint("Range") String address = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS));
-                @SuppressLint("Range") double latitude = cursor.getDouble((int) cursor.getDouble(cursor.getColumnIndex(COLUMN_LATITUDE)));
-                @SuppressLint("Range") double longitude = cursor.getDouble(cursor.getColumnIndex(COLUMN_LONGITUDE));
-                @SuppressLint("Range") String timestamp = cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP));
-                //Tạo đối tương Item để thêm vào danh sách
-                Item item = new Item(id,name,description,imageUrl,address,latitude,longitude,timestamp);
-                itemList.add(item);
+                try {
+                    // Lấy giá trị của từng cột, kiểm tra null trước khi đọc
+                    int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)); // Lấy ID
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)); // Lấy tên
+                    @SuppressLint("Range") String description = cursor.isNull(cursor.getColumnIndex(COLUMN_DESCRIPTION))
+                            ? "" : cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)); // Mô tả
+                    @SuppressLint("Range") String imageUrl = cursor.isNull(cursor.getColumnIndex(COLUMN_IMAGE_URL))
+                            ? "" : cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE_URL)); // URL ảnh
+                    @SuppressLint("Range") String address = cursor.isNull(cursor.getColumnIndex(COLUMN_ADDRESS))
+                            ? "" : cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS)); // Địa chỉ
+                    @SuppressLint("Range") double latitude = cursor.isNull(cursor.getColumnIndex(COLUMN_LATITUDE))
+                            ? 0.0 : cursor.getDouble(cursor.getColumnIndex(COLUMN_LATITUDE)); // Vĩ độ
+                    @SuppressLint("Range") double longitude = cursor.isNull(cursor.getColumnIndex(COLUMN_LONGITUDE))
+                            ? 0.0 : cursor.getDouble(cursor.getColumnIndex(COLUMN_LONGITUDE)); // Kinh độ
+                    @SuppressLint("Range") String timestamp = cursor.isNull(cursor.getColumnIndex(COLUMN_TIMESTAMP))
+                            ? "" : cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP)); // Thời gian
+
+                    // Tạo đối tượng Item từ dữ liệu đã đọc
+                    Item item = new Item(id, name, description, imageUrl, address, latitude, longitude, timestamp);
+
+                    // Thêm item vào danh sách
+                    itemList.add(item);
+                } catch (Exception e) {
+                    // Ghi log nếu có lỗi khi đọc dữ liệu từ con trỏ
+                    Log.e("DatabaseError", "Error reading cursor: " + e.getMessage());
+                }
             }
-            cursor.close();
+            cursor.close(); // Đóng con trỏ để tránh rò rỉ bộ nhớ
         }
-        db.close();
-        return itemList;
+        db.close(); // Đóng cơ sở dữ liệu sau khi sử dụng
+        return itemList; // Trả về danh sách các đồ vật
     }
 }
