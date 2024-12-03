@@ -16,6 +16,9 @@
 ## TH_Bai1_BasicGUI_SimpleMath
 ![Giao diện Simple Math](https://github.com/datx24/64130299-MobieAppDev/blob/main/SimpleMath/Screenshot%202024-12-03%20214647.png)
 
+## TH_Bai2_BasicGUI_BMI
+![Giao diện BMI p1](https://github.com/datx24/64130299-MobieAppDev/blob/main/BMI/z6094922058961_3c1e15b9860e831f30fdffab65956548.jpg)
+![Giao diện BMI p2](https://github.com/datx24/64130299-MobieAppDev/blob/main/BMI/z6094922065445_2ee2470245b0b054299e2e6951533a47.jpg)
 
 
 
