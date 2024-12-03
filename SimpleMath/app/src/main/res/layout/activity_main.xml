@@ -82,8 +82,9 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -124,6 +125,16 @@
                 android:text="Chia" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Thực hiện"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
