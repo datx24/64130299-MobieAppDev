@@ -2,6 +2,7 @@ package datnx.doan.timdothatlac;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -64,5 +65,26 @@ public class MapActivity extends AppCompatActivity {
         marker.setPosition(itemLocation);
         marker.setTitle("Vị trí đồ vật");
         mapView.getOverlays().add(marker);
+    }
+
+    //Phương thức lấy vị trí hiện tại
+    @SuppressLint("MissingPermission")
+    private void fetchCurrentLocation() {
+        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
+            if(location != null) {
+                double lat = location.getLatitude();
+                double lon  = location.getLongitude();
+                currentPoint = new GeoPoint(lat,lon);
+
+                //Thêm marker cho vị trí hiện tại
+                Marker currentMarker = new Marker(mapView);
+                currentMarker.setPosition(currentPoint);
+                currentMarker.setTitle("Vị trí của bạn");
+                currentMarker.setIcon(getResources().getDrawable(R.drawable.ic_camera_placeholder));
+
+                //Cập nhật bản đồ để hiển thị cả hai vị trí
+                mapView.invalidate();
+            }
+        });
     }
 }
