@@ -13,6 +13,9 @@
 ![Giao diện nền xanh nhạt](https://github.com/datx24/64130299-MobieAppDev/blob/main/DemoFragment/Screenshot%202024-11-20%20010611.png)
 ![Giao diện nền đỏ tươi](https://github.com/datx24/64130299-MobieAppDev/blob/main/DemoFragment/Screenshot%202024-11-20%20010621.png)
 
+## TH_Bai1_BasicGUI_SimpleMath
+![Giao diện Simple Math](https://github.com/datx24/64130299-MobieAppDev/blob/main/SimpleMath/Screenshot%202024-12-03%20214647.png)
+
 
 
 
