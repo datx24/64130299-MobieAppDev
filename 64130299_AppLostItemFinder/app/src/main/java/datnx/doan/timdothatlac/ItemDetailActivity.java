@@ -43,6 +43,11 @@ public class ItemDetailActivity extends AppCompatActivity {
     // Phương thức được gọi khi nhấn vào nút
     public void goToMapView(View view) {
         Intent intent = new Intent(ItemDetailActivity.this, MapActivity.class);
+
+        //Gửi dữ liệu tới vị trí
+        intent.putExtra("latitude",getIntent().getDoubleExtra("latitude",0));
+        intent.putExtra("longitude", getIntent().getDoubleExtra("longitude",0));
+
         startActivity(intent);
     }
 }
