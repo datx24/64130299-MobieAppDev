@@ -47,15 +47,30 @@
             android:textSize="18sp"
             android:textColor="@color/item_name_color"/>
 
-        <!-- Vị trí đồ vật -->
         <TextView
-            android:id="@+id/tvItemLocation"
+            android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Location: Not Available"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/location_color"/>
+            android:paddingTop="8dp"
+            android:text="Address: " />
+
+        <TextView
+            android:id="@+id/tvLatitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:text="Latitude: " />
+
+        <TextView
+            android:id="@+id/tvLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:text="Longitude: " />
+
 
         <!-- Nút xem vị trí trên bản đồ -->
 
