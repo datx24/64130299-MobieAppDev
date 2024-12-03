@@ -4,6 +4,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -86,5 +87,13 @@ public class MapActivity extends AppCompatActivity {
                 mapView.invalidate();
             }
         });
+    }
+
+    //Phương thức tính khoảng cách 2 điểm
+    private float calculateDistance(GeoPoint point1,GeoPoint point2) {
+        float[] result = new float[1];
+        Location.distanceBetween(point1.getLatitude(),point1.getLongitude(),point2.getLatitude(),
+                                    point2.getLongitude(),result);
+        return result[0];//khoảng cách tính bằng mét
     }
 }
