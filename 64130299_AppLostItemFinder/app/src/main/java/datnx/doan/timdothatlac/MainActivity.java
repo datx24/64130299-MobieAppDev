@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView; //khai báo RecycleView hiển thị danh sách đồ vật
-    private ItemAdapter adapter;
-    private List<Item> itemList;
-    private DatabaseHelper dbHelper; // khai báo đối tượng để tương tác với cơ sở dữ liệu
+    RecyclerView recyclerView; //khai báo RecycleView hiển thị danh sách đồ vật
+    ItemAdapter adapter;
+    List<Item> itemList;
+    DatabaseHelper dbHelper; // khai báo đối tượng để tương tác với cơ sở dữ liệu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,14 +2,14 @@ package datnx.doan.timdothatlac;
 
 
 public class Item {
-    private int id;
-    private String name;
-    private String description;
-    private String imageUrl;
-    private String address;
-    private double latitude;
-    private double longitude;
-    private String timestamp;
+    private final int id;
+    private final String name;
+    private final String description;
+    private final String imageUrl;
+    private final String address;
+    private final double latitude;
+    private final double longitude;
+    private final String timestamp;
 
     // Constructor
     public Item(int id, String name, String description, String imageUrl, String address, double latitude, double longitude, String timestamp) {
