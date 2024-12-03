@@ -7,7 +7,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -88,22 +90,48 @@ public class MapActivity extends AppCompatActivity {
 
     //Phương thức lấy vị trí hiện tại
     private void fetchCurrentLocation() {
-        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
-            if(location != null) {
-                double lat = location.getLatitude();
-                double lon  = location.getLongitude();
-                currentPoint = new GeoPoint(lat,lon);
+        if (ContextCompat.checkSelfPermission(this,ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            try {
+                fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
+                    if (location != null) {
+                        double lat = location.getLatitude();
+                        double lon = location.getLongitude();
+                        currentPoint = new GeoPoint(lat, lon);
 
-                //Thêm marker cho vị trí hiện tại
-                Marker currentMarker = new Marker(mapView);
-                currentMarker.setPosition(currentPoint);
-                currentMarker.setTitle("Vị trí của bạn");
-                currentMarker.setIcon(getResources().getDrawable(R.drawable.ic_camera_placeholder));
+                        // Thêm marker cho vị trí hiện tại
+                        Marker currentMarker = new Marker(mapView);
+                        currentMarker.setPosition(currentPoint);
+                        currentMarker.setTitle("Vị trí của bạn");
+                        mapView.getOverlays().add(currentMarker);
 
-                //Cập nhật bản đồ để hiển thị cả hai vị trí
-                mapView.invalidate();
+                        // Cập nhật lại bản đồ
+                        mapView.invalidate();
+                    } else {
+                        Toast.makeText(this, "Không thể lấy vị trí hiện tại.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (SecurityException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Quyền vị trí chưa được cấp.", Toast.LENGTH_SHORT).show();
             }
-        });
+        } else {
+            // Yêu cầu quyền nếu chưa được cấp
+            ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Quyền đã được cấp, gọi lại fetchCurrentLocation
+                fetchCurrentLocation();
+            } else {
+                // Quyền bị từ chối
+                Toast.makeText(this, "Bạn cần cấp quyền vị trí để sử dụng tính năng này.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     //Phương thức tính khoảng cách 2 điểm
