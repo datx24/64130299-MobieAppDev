@@ -3,54 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3F8FE"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Chỉ số BMI"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#2B4865"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.9"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:id="@+id/editHeight"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="104dp"
+        android:backgroundTint="#D2E8F4"
         android:hint="Nhập chiều cao (cm)"
         android:inputType="numberDecimal"
+        android:padding="10dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.646"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
-
-    <Button
-        android:id="@+id/btnCalculate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="Tính BMI"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        app:layout_constraintWidth_percent="0.8" />
-
-    <TextView
-        android:id="@+id/textResult"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
-        android:text="Kết quả sẽ hiển thị ở đây"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.646"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCalculate"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        app:layout_constraintWidth_percent="0.85" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editWeight">
 
@@ -59,30 +52,69 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Người Châu Á"
+            android:textColor="#2B4865"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="298dp" />
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="307dp" />
 
         <RadioButton
             android:id="@+id/radioNonAsian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Không phải người Châu Á"
+            android:textColor="#2B4865"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="346dp" />
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="355dp" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Tính BMI"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4CAF50"
+        android:textSize="18sp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.85" />
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="#E8F6FA"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Kết quả"
+        android:textColor="#2B4865"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCalculate"
+        app:layout_constraintWidth_percent="0.85" />
 
     <EditText
         android:id="@+id/editWeight"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#D2E8F4"
         android:hint="Nhập cân nặng (kg)"
         android:inputType="numberDecimal"
+        android:padding="10dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.646"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editHeight"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.85" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
