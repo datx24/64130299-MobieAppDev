@@ -17,6 +17,7 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 public class MapActivity extends AppCompatActivity {
     private MapView mapView;
@@ -46,5 +47,11 @@ public class MapActivity extends AppCompatActivity {
         IMapController mapController = mapView.getController();
         mapController.setCenter(itemLocation);
         mapController.setZoom(15.0);
+
+        //Tạo marker và thêm vào bản đồ
+        Marker marker = new Marker(mapView);
+        marker.setPosition(itemLocation);
+        marker.setTitle("Vị trí đồ vật");
+        mapView.getOverlays().add(marker);
     }
 }
