@@ -33,7 +33,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
+            android:id="@+id/mathFragmentContainerView"
             android:name="th.nguyenxuandat.ChuyenManHinh_Fragment.MathFragment1"
             android:layout_width="0dp"
             android:layout_height="590dp"
