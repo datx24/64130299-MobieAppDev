@@ -33,7 +33,17 @@ public class MainActivity extends AppCompatActivity {
         itemList = dbHelper.getAllItems();
 
         //Tạo và gán Adapter cho RecyclerView
-        adapter = new ItemAdapter(this);
+        adapter = new ItemAdapter(this,itemList, new ItemAdapter.OnItemActionListener() {
+            @Override
+            public void onDeleteItem(Item item, int position) {
+
+            }
+
+            @Override
+            public void onEditItem(Item item) {
+
+            }
+        });
         recyclerView.setAdapter(adapter);
 
         //Kiểm tra xem danh sách có rỗng không và hiển thị thông báo nếu rỗng
