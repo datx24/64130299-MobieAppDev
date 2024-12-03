@@ -17,6 +17,38 @@
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.342">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="B = "
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="239dp" />
+
+            <EditText
+                android:id="@+id/inputResult"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Nhập số thứ hai"
+                android:inputType="text"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="231dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -49,49 +81,15 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.342">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="B = "
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="239dp" />
-
-            <EditText
-                android:id="@+id/inputB"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Nhập số thứ hai
-"
-                android:inputType="text"
-                tools:layout_editor_absoluteX="75dp"
-                tools:layout_editor_absoluteY="231dp" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:layout_weight="1"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            tools:layout_editor_absoluteY="314dp">
 
             <TextView
                 android:id="@+id/textView2"
@@ -101,28 +99,32 @@
                 android:textSize="24sp" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButtonPlus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cộng" />
+                android:text="Cộng"
+                android:textSize="16sp" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButtonSubtract"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Trừ" />
+                android:text="Trừ"
+                android:textSize="16sp" />
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/radioButtonMultiplication"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nhân" />
+                android:text="Nhân"
+                android:textSize="16sp" />
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/radioButtonDivide"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chia" />
+                android:text="Chia"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -135,6 +137,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnResult">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Kết quả :"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
