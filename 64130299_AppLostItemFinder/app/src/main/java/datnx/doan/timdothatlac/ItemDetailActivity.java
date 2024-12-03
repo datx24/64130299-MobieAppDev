@@ -22,12 +22,21 @@ public class ItemDetailActivity extends AppCompatActivity {
         //Nhận dữ liệu từ intent
         String itemName = getIntent().getStringExtra("name");
         String itemImageUrl = getIntent().getStringExtra("image_url");
+        String itemAddress = getIntent().getStringExtra("address");
+        double itemLatitude = getIntent().getDoubleExtra("latitude", 0.0); // Giá trị mặc định là 0.0 nếu không có dữ liệu
+        double itemLongitude = getIntent().getDoubleExtra("longitude", 0.0); // Giá trị mặc định là 0.0 nếu không có dữ liệu
 
         //Hiển thị dữ liệu lên giao diện
         ImageView imageView = findViewById(R.id.imgItem);
         TextView nameTextView = findViewById(R.id.tvItemName);
+        TextView addressTextView = findViewById(R.id.tvAddress);
+        TextView latitudeTextView = findViewById(R.id.tvLatitude);
+        TextView longitudeTextView = findViewById(R.id.tvLongitude);
 
         nameTextView.setText(itemName);
+        addressTextView.setText("Address: " + itemAddress);
+        latitudeTextView.setText("Latitude: " + itemLatitude);
+        longitudeTextView.setText("Longitude: " + itemLongitude);
         Picasso.get().load(itemImageUrl).into(imageView);
     }
 
