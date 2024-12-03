@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -21,30 +22,39 @@ import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import java.util.Locale;
+
 public class MapActivity extends AppCompatActivity {
     private MapView mapView;
     private double latitude;
     private double longitude;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private GeoPoint currentPoint; //vị trí hiện tại
+    private TextToSpeech textToSpeech;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        //Nhận dữ liệu từ Intent
+        latitude = getIntent().getDoubleExtra("latitude",0);
+        longitude = getIntent().getDoubleExtra("longitude",0);
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         //Yêu cầu quyền truy cập vị trí nếu chưa cấp
         if(ContextCompat.checkSelfPermission(this,ACCESS_FINE_LOCATION) !=
-            PackageManager.PERMISSION_GRANTED) {
+                PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION},1);
         }else{
             //Lấy vị trí hiện tại
             fetchCurrentLocation();
         }
 
-        //Nhận dữ liệu từ Intent
-        latitude = getIntent().getDoubleExtra("latitude",0);
-        longitude = getIntent().getDoubleExtra("longitude",0);
+        textToSpeech = new TextToSpeech(this,status -> {
+            if(status == TextToSpeech.SUCCESS) {
+                textToSpeech.setLanguage(new Locale("vi","VN"));//Cài tiếng việt
+            }
+        });
 
         //Khởi tạo bản đồ
         mapView = findViewById(R.id.osmMapView);
@@ -66,10 +76,17 @@ public class MapActivity extends AppCompatActivity {
         marker.setPosition(itemLocation);
         marker.setTitle("Vị trí đồ vật");
         mapView.getOverlays().add(marker);
+
+        //Đọc khoảng cách sau khi tính
+        mapView.postDelayed(() -> {
+            if(currentPoint != null) {
+                float distance = calculateDistance(currentPoint,itemLocation);
+                speakDistance(distance);
+            }
+        },1000);
     }
 
     //Phương thức lấy vị trí hiện tại
-    @SuppressLint("MissingPermission")
     private void fetchCurrentLocation() {
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
             if(location != null) {
