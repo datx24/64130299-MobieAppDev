@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+
 import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
@@ -20,6 +22,8 @@ public class MapActivity extends AppCompatActivity {
     private MapView mapView;
     private double latitude;
     private double longitude;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private GeoPoint currentPoint; //vị trí hiện tại
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
