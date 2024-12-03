@@ -23,7 +23,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="match_parent"
                 android:background="?attr/colorPrimary"
                 app:title="Map"
                 app:titleTextColor="@android:color/white" />
@@ -33,10 +33,10 @@
         <org.osmdroid.views.MapView
             android:id="@+id/osmMapView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="700dp"
+            android:layout_below="@id/appBarLayout"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="64dp"
-        android:layout_below="@id/appBarLayout" />
+            android:layout_marginBottom="64dp" />
 
         <!-- Nút quay lại -->
         <com.google.android.material.button.MaterialButton
