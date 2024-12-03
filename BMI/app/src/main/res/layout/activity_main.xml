@@ -1,0 +1,95 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Nhập chiều cao -->
+
+    <!-- Nhập cân nặng -->
+
+    <EditText
+        android:id="@+id/editHeight"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="96dp"
+        android:hint="Nhập chiều cao (cm)"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.646"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <EditText
+        android:id="@+id/editWeight"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:hint="Nhập cân nặng (kg)"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.646"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editHeight"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Tính BMI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="Kết quả sẽ hiển thị ở đây"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.646"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCalculate"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editWeight">
+
+        <RadioButton
+            android:id="@+id/radioAsian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Người Châu Á"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="289dp" />
+
+        <RadioButton
+            android:id="@+id/radioNonAsian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Không phải người Châu Á"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="337dp" />
+    </RadioGroup>
+
+    <!-- Chọn loại người -->
+
+    <!-- Nút tính toán -->
+
+    <!-- Kết quả -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
