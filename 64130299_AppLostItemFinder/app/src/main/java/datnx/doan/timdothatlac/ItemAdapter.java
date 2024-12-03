@@ -43,13 +43,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item currentItem = itemList.get(position);
 
-        holder.itemName.setText(currentItem.getName() != null ? currentItem.getName() : "No Name");
-
-        if (currentItem.getImageUrl() != null && !currentItem.getImageUrl().isEmpty()) {
-            Picasso.get().load(currentItem.getImageUrl()).placeholder(R.drawable.ic_camera_placeholder).into(holder.itemImage);
-        } else {
-            holder.itemImage.setImageResource(R.drawable.ic_camera_placeholder);
-        }
+        // Set OnClickListener for the item view
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ItemDetailActivity.class);
+            intent.putExtra("name", currentItem.getName());
+            intent.putExtra("image_url", currentItem.getImageUrl());
+            intent.putExtra("address", currentItem.getAddress());
+            intent.putExtra("latitude", currentItem.getLatitude());
+            intent.putExtra("longitude", currentItem.getLongitude());
+            context.startActivity(intent);
+        });
 
         holder.deleteItem.setOnClickListener(view -> {
             new AlertDialog.Builder(view.getContext())
@@ -63,23 +66,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                     .setNegativeButton("Không", null)
                     .show();
         });
-
-        holder.itemView.setOnClickListener(view -> goToItemDetailActivity(view, currentItem));
     }
-
-    private void goToItemDetailActivity(View view, Item currentItem) {
-        Context context = view.getContext();
-        Intent intent = new Intent(context, ItemDetailActivity.class);
-        intent.putExtra("name", currentItem.getName());
-        intent.putExtra("imageUrl", currentItem.getImageUrl());
-        context.startActivity(intent);
-    }
-
     @Override
     public int getItemCount() {
         return itemList != null ? itemList.size() : 0;
     }
-
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView itemName;
         ImageView itemImage, deleteItem;
