@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -28,6 +29,16 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        //Yêu cầu quyền truy cập vị trí nếu chưa cấp
+        if(ContextCompat.checkSelfPermission(this,ACCESS_FINE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION},1);
+        }else{
+            //Lấy vị trí hiện tại
+            fetchCurrentLocation();
+        }
 
         //Nhận dữ liệu từ Intent
         latitude = getIntent().getDoubleExtra("latitude",0);
