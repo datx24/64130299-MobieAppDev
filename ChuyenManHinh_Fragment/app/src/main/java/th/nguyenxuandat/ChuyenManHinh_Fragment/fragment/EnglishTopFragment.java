@@ -9,12 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EnglishTopFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EnglishTopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
