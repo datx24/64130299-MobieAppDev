@@ -9,13 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.EnglishBottomFragment;
 import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.EnglishFragment1;
-import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.EnglishFragment2;
-import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.EnglishFragment3;
 import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
 import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.EnglishTopFragment;
 
 public class EnglishActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
