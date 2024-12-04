@@ -5,11 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ProgrammingActivity">
+    tools:context=".activity.ProgrammingActivity"
+    android:background="@drawable/background_gradient">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +27,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="8dp"
             android:text="Mẹo lập trình hiệu quả"
+            android:textColor="@color/white"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/scrollView2"
@@ -50,6 +53,7 @@
                 android:lineSpacingExtra="6dp"
                 android:padding="16dp"
                 android:text="Loading tips..."
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

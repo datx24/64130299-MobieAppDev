@@ -9,16 +9,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFAF0">
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-103dp">
 
             <TextView
                 android:id="@+id/tvScrambledWord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="260dp"
+                android:layout_marginTop="156dp"
                 android:text="Rearrange the letters: ETRTA"
                 android:textColor="#333333"
                 android:textSize="22sp"
@@ -31,12 +33,13 @@
                 android:id="@+id/etAnswer1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:hint="Your Answer"
                 android:inputType="text"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvScrambledWord" />
 
@@ -44,13 +47,13 @@
                 android:id="@+id/btnCheck1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#28A745"
                 android:text="Check Answer"
-                android:backgroundTint="#0A5EB0"
                 android:textColor="#FFFFFF"
-                app:layout_constraintTop_toBottomOf="@id/etAnswer1"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etAnswer1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

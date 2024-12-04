@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D4EBF8"
+    android:background="@drawable/background_gradient"
     tools:context=".activity.MathActivity">
-    <!-- Fragment Container -->
-
-    <!-- Bottom Fragment Container -->
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mathFragmentContainerView"
@@ -27,7 +24,6 @@
         android:id="@+id/bottomMathFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#E3F2FD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"

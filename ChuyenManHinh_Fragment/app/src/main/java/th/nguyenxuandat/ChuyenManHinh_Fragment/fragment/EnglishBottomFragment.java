@@ -8,10 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
 public class EnglishBottomFragment extends Fragment {
-    private Button btnPrevFragment,btnNextFragment;
+    private ImageButton btnPrevFragment,btnNextFragment;
     private int currentFramentIndex = 0; //Theo dõi bị trí fragment hiện tại
 
     public EnglishBottomFragment() {

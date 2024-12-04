@@ -6,14 +6,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.EnglishActivity">
+    tools:context=".activity.EnglishActivity"
+    android:background="@drawable/background_gradient">
 
     <!-- Top Fragment Container -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/topEnglishFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#E3F2FD"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,12 +34,11 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/bottomEnglishFragment"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#E3F2FD"
-        app:layout_constraintTop_toBottomOf="@id/englishFragmentContainerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.15" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/englishFragmentContainerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
