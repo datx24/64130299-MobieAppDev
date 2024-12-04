@@ -32,4 +32,32 @@ public class EnglishBottomFragment extends Fragment {
         
         return view;
     }
+
+    //Phương thức xác định vị trí fragment để chuyển trang
+    private void navigateToFragment(boolean isNext) {
+        if(getActivity() != null) {
+            if(isNext) {
+                currentFramentIndex = (currentFramentIndex + 1) % 3 ; //Tăng chỉ sổ
+            } else {
+                currentFramentIndex = (currentFramentIndex - 1) + 3; //Giảm chỉ số
+            }
+
+            Fragment selectedFragment; // Khai báo fragment được chọn
+            switch (currentFramentIndex) {
+                case 1 :
+                    selectedFragment = new EnglishFragment2();
+                    break;
+                case 2 :
+                    selectedFragment = new EnglishFragment3();
+                    break;
+                default :
+                    selectedFragment = new EnglishFragment1();
+            }
+
+            // Tải fragment được chọn vào fragment giữa
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.englishFragmentContainerView,selectedFragment)
+                    .commit(); // thay thế fragment hiện tại và xác nhận
+        }
+    }
 }
