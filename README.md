@@ -43,12 +43,12 @@
 
 ## Thực hành bài 3 (ChuyenManHinh_Fragment)
 <p align="center">
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525849768_f2edd90fd75ad5bcb7f8fec401cf59db.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p1" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525850476_6273cee7e3ff36b4a3acf923b1754fd0.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p2" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525852407_78013fcdba3b44a21bebbd5fdf43e6fe.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p3" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525853037_3a2974bc6605592571b38bda1551e3ff.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p4" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525855128_872277941e2e93dbf25004efdf0e908a.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p5" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525859844_711f89708fdb869650a380ece97b3ebd.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p6" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525860156_5842c5e4b40d3de4ea9569655896217a.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p7" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525862352_95ed93fc2024dfb6b4b667baf96f4f38.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p8" width="300" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525849768_f2edd90fd75ad5bcb7f8fec401cf59db.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p1" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525850476_6273cee7e3ff36b4a3acf923b1754fd0.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p2" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525852407_78013fcdba3b44a21bebbd5fdf43e6fe.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p3" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525853037_3a2974bc6605592571b38bda1551e3ff.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p4" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525855128_872277941e2e93dbf25004efdf0e908a.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p5" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525859844_711f89708fdb869650a380ece97b3ebd.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p6" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525860156_5842c5e4b40d3de4ea9569655896217a.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p7" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/ChuyenManHinh_Fragment/z6098525862352_95ed93fc2024dfb6b4b667baf96f4f38.jpg" alt="Giao diện ChuyenManHinh_FragmentAssignment p8" width="200" />
 </p>
