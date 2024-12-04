@@ -6,84 +6,33 @@
     android:layout_height="match_parent"
     android:background="#D4EBF8"
     tools:context=".activity.MathActivity">
-
-    <!-- Header Title -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Trắc nghiệm toán học"
-        android:textColor="@color/primary_text_color"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/mathFragmentContainerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!-- Fragment Container -->
+
+    <!-- Bottom Fragment Container -->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mathFragmentContainerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/fragment_background"
-        app:layout_constraintBottom_toTopOf="@id/linearLayoutButtons"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.556" />
 
-    <!-- Buttons Layout -->
-    <LinearLayout
-        android:id="@+id/linearLayoutButtons"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/bottomMathFragment"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#D4EBF8"
-        android:elevation="4dp"
-        android:orientation="horizontal"
-        android:padding="15dp"
+        android:layout_height="0dp"
+        android:background="#E3F2FD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mathFragmentContainerView">
-
-        <!-- Buttons -->
-
-        <Button
-            android:id="@+id/btnMathFragment1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#0A5EB0"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Bài 1"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMathFragment2"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#0A5EB0"
-            android:padding="5dp"
-            android:text="Bài 2"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMathFragment3"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#0A5EB0"
-            android:padding="5dp"
-            android:text="Bài 3"
-            android:textColor="@color/white" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/mathFragmentContainerView"
+        app:layout_constraintVertical_bias="0.3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
