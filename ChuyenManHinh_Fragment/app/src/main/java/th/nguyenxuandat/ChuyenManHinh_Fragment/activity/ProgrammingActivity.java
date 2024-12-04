@@ -1,4 +1,4 @@
-package th.nguyenxuandat.ChuyenManHinh_Fragment;
+package th.nguyenxuandat.ChuyenManHinh_Fragment.activity;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
 
 public class ProgrammingActivity extends AppCompatActivity {
 

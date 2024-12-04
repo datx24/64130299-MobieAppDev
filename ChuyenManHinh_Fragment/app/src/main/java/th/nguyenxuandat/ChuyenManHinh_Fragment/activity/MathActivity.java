@@ -1,15 +1,16 @@
-package th.nguyenxuandat.ChuyenManHinh_Fragment;
+package th.nguyenxuandat.ChuyenManHinh_Fragment.activity;
 
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.MathFragment1;
+import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.MathFragment2;
+import th.nguyenxuandat.ChuyenManHinh_Fragment.fragment.MathFragment3;
+import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
 
 public class MathActivity extends AppCompatActivity {
 

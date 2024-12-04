@@ -1,4 +1,4 @@
-package th.nguyenxuandat.ChuyenManHinh_Fragment;
+package th.nguyenxuandat.ChuyenManHinh_Fragment.fragment;
 
 import android.os.Bundle;
 
@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MathFragment1 extends Fragment {
+import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
+
+public class MathFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_math1, container, false);
+        return inflater.inflate(R.layout.fragment_math2, container, false);
     }
 }

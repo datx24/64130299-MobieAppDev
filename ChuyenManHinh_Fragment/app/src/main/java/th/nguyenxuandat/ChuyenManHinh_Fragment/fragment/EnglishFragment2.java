@@ -1,4 +1,4 @@
-package th.nguyenxuandat.ChuyenManHinh_Fragment;
+package th.nguyenxuandat.ChuyenManHinh_Fragment.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import th.nguyenxuandat.ChuyenManHinh_Fragment.R;
 
 public class EnglishFragment2 extends Fragment {
     @Nullable
