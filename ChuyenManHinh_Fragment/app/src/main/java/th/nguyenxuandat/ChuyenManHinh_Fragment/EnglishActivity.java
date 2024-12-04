@@ -41,5 +41,4 @@ public class EnglishActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-    }
 }
