@@ -9,9 +9,9 @@
 
 ## Ứng dụng Firebase Demo (Authentication, Realtime Database)
 <p align="center">
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/MyFirebase_64130299/Screenshot%202024-11-18%20235101.png" alt="Giao diện đăng nhập" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/MyFirebase_64130299/Screenshot%202024-11-18%20235121.png" alt="Giao diện màn hình chính" width="300" />
-  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/MyFirebase_64130299/Screenshot%202024-11-18%20235136.png" alt="Giao diện đăng xuất" width="300" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/MyFirebase_64130299/Screenshot%202024-11-18%20235101.png" alt="Giao diện đăng nhập" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/MyFirebase_64130299/Screenshot%202024-11-18%20235121.png" alt="Giao diện màn hình chính" width="200" />
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/MyFirebase_64130299/Screenshot%202024-11-18%20235136.png" alt="Giao diện đăng xuất" width="200" />
 </p>
 
 ---
