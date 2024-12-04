@@ -18,9 +18,9 @@ public class MathActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math);
 
-        Button btnFragment1 = findViewById(R.id.btnFragment1);
-        Button btnFragment2 = findViewById(R.id.btnFragment2);
-        Button btnFragment3 = findViewById(R.id.btnFragment3);
+        Button btnFragment1 = findViewById(R.id.btnMathFragment1);
+        Button btnFragment2 = findViewById(R.id.btnMathFragment2);
+        Button btnFragment3 = findViewById(R.id.btnMathFragment3);
 
         //Hiển thị frament 1 làm mặc định
         loadFragment(new MathFragment1());
