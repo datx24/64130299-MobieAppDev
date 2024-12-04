@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:background="#D4EBF8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,15 +20,77 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginTop="16dp"
             android:text="Trắc nghiệm tiếng anh"
             android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <!-- Fragment Container -->
+
+        <!-- Buttons Layout -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/englishFragmentContainerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/fragment_background"
+            app:layout_constraintBottom_toTopOf="@id/linearLayoutButtons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#D4EBF8"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/englishFragmentContainerView">
+
+            <!-- Buttons -->
+
+            <Button
+                android:id="@+id/btnEnglishFragment1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0A5EB0"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Bài 1"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnEnglishFragment2"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0A5EB0"
+                android:padding="5dp"
+                android:text="Bài 2"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnEnglishFragment3"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0A5EB0"
+                android:padding="5dp"
+                android:text="Bài 3"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
