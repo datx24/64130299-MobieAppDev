@@ -1,110 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.EnglishActivity"
-    tools:layout_editor_absoluteX="15dp"
-    tools:layout_editor_absoluteY="-49dp">
+    tools:context=".activity.EnglishActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#D4EBF8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Top Fragment Container -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/topEnglishFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#E3F2FD"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Trắc nghiệm tiếng anh"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toTopOf="@+id/englishFragmentContainerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.52"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <!-- Fragment Container -->
+    <!-- Middle Fragment Container -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/englishFragmentContainerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fragment_background"
+        app:layout_constraintTop_toBottomOf="@id/topEnglishFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7" />
 
-        <!-- Buttons Layout -->
+    <!-- Bottom Fragment Container -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/bottomEnglishFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#E3F2FD"
+        app:layout_constraintTop_toBottomOf="@id/englishFragmentContainerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.15" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/englishFragmentContainerView"
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:background="@drawable/fragment_background"
-            app:layout_constraintBottom_toTopOf="@id/linearLayoutButtons"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView4" />
-
-        <LinearLayout
-            android:id="@+id/linearLayoutButtons"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="#D4EBF8"
-            android:elevation="4dp"
-            android:orientation="horizontal"
-            android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/englishFragmentContainerView">
-
-            <!-- Buttons -->
-
-            <Button
-                android:id="@+id/btnEnglishFragment1"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="#0A5EB0"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Bài 1"
-                android:textColor="@color/white"
-                tools:layout_editor_absoluteX="36dp"
-                tools:layout_editor_absoluteY="701dp" />
-
-            <Button
-                android:id="@+id/btnEnglishFragment2"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="#0A5EB0"
-                android:padding="5dp"
-                android:text="Bài 2"
-                android:textColor="@color/white"
-                tools:layout_editor_absoluteX="162dp"
-                tools:layout_editor_absoluteY="701dp" />
-
-            <Button
-                android:id="@+id/btnEnglishFragment3"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="#0A5EB0"
-                android:padding="5dp"
-                android:text="Bài 3"
-                android:textColor="@color/white"
-                tools:layout_editor_absoluteX="289dp"
-                tools:layout_editor_absoluteY="701dp" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
