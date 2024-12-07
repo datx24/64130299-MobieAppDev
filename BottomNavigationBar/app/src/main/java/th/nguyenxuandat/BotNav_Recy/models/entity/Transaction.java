@@ -1,4 +1,4 @@
-package th.nguyenxuandat.BotNav_Recy;
+package th.nguyenxuandat.BotNav_Recy.models.entity;
 
 public class Transaction {
     private int image;

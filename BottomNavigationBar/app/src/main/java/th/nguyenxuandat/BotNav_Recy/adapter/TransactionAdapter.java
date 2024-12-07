@@ -1,4 +1,4 @@
-package th.nguyenxuandat.BotNav_Recy;
+package th.nguyenxuandat.BotNav_Recy.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
+
+import th.nguyenxuandat.BotNav_Recy.R;
+import th.nguyenxuandat.BotNav_Recy.models.entity.Transaction;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder> {
 

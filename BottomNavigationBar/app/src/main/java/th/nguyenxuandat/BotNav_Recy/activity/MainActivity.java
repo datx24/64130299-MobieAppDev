@@ -1,12 +1,17 @@
-package th.nguyenxuandat.BotNav_Recy;
+package th.nguyenxuandat.BotNav_Recy.activity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import th.nguyenxuandat.BotNav_Recy.fragment.HomeFragment;
+import th.nguyenxuandat.BotNav_Recy.fragment.NotificationFragment;
+import th.nguyenxuandat.BotNav_Recy.R;
+import th.nguyenxuandat.BotNav_Recy.fragment.SettingFragment;
+import th.nguyenxuandat.BotNav_Recy.fragment.TransactionFragment;
 
 public class MainActivity extends AppCompatActivity {
 

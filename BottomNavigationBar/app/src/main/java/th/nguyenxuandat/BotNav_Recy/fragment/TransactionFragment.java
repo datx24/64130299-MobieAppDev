@@ -1,4 +1,4 @@
-package th.nguyenxuandat.BotNav_Recy;
+package th.nguyenxuandat.BotNav_Recy.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import th.nguyenxuandat.BotNav_Recy.R;
+import th.nguyenxuandat.BotNav_Recy.adapter.TransactionAdapter;
+import th.nguyenxuandat.BotNav_Recy.models.entity.Transaction;
 
 public class TransactionFragment extends Fragment {
 
