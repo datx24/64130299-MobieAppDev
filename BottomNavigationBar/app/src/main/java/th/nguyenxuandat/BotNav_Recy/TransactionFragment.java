@@ -28,12 +28,15 @@ public class TransactionFragment extends Fragment {
         // Gắn adapter
         TransactionAdapter adapter = new TransactionAdapter(transactions);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         return view;
     }
 
+
+
     private List<Transaction> getTransactionData() {
         List<Transaction> transactions = new ArrayList<>();
-        transactions.add(new Transaction(R.drawable.ic_electricity, "Hóa đơn điện"));
+        transactions.add(new Transaction(R.drawable.ic_water, "Hóa đơn điện"));
         transactions.add(new Transaction(R.drawable.ic_water, "Water Bill"));
         transactions.add(new Transaction(R.drawable.ic_internet, "Internet Bill"));
         transactions.add(new Transaction(R.drawable.ic_gas, "Gas Bill"));
