@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_margin="5dp"
         android:background="@drawable/bg_bottom_nav"
         app:itemIconSize="32dp"
         app:itemIconTint="@color/nav_item_color_selector"
