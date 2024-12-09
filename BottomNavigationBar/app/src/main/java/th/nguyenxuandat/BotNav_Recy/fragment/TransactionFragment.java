@@ -40,10 +40,10 @@ public class TransactionFragment extends Fragment {
 
     private List<Transaction> getTransactionData() {
         List<Transaction> transactions = new ArrayList<>();
-        transactions.add(new Transaction(R.drawable.ic_water, "Hóa đơn điện"));
-        transactions.add(new Transaction(R.drawable.ic_water, "Water Bill"));
-        transactions.add(new Transaction(R.drawable.ic_internet, "Internet Bill"));
-        transactions.add(new Transaction(R.drawable.ic_gas, "Gas Bill"));
+        transactions.add(new Transaction(R.mipmap.ic_bill1, "Hóa đơn điện"));
+        transactions.add(new Transaction(R.mipmap.ic_bill1, "Hóa đơn nước"));
+        transactions.add(new Transaction(R.mipmap.ic_bill1, "Hóa đơn Internet"));
+        transactions.add(new Transaction(R.mipmap.ic_bill1, "Hóa đơn Gas"));
         return transactions;
     }
 }
