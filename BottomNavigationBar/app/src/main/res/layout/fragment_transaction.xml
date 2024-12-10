@@ -9,8 +9,6 @@
         android:id="@+id/recyclerViewTransaction"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="#D9EAFD"
         android:padding="8dp" />
-
-
 </FrameLayout>

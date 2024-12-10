@@ -12,11 +12,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import th.nguyenxuandat.BotNav_Recy.R;
-import th.nguyenxuandat.BotNav_Recy.adapter.CardAdapter;
+import th.nguyenxuandat.BotNav_Recy.adapter.NotificationAdapter;
 
 public class NotificationFragment extends Fragment {
     private RecyclerView recyclerView;
-    private CardAdapter adapter;
+    private NotificationAdapter adapter;
     private LinearLayoutManager layoutManager;
 
     @Nullable
@@ -29,7 +29,7 @@ public class NotificationFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerNotificationView);
         layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new CardAdapter(cardTitles);
+        adapter = new NotificationAdapter(cardTitles);
         recyclerView.setAdapter(adapter);
 
         view.findViewById(R.id.btn1).setOnClickListener(v -> scrollToPosition(0));

@@ -10,11 +10,11 @@ import java.util.List;
 
 import th.nguyenxuandat.BotNav_Recy.R;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
+public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.CardViewHolder> {
 
     private final List<String> cardTitles;
 
-    public CardAdapter(List<String> cardTitles) {
+    public NotificationAdapter(List<String> cardTitles) {
         this.cardTitles = cardTitles;
     }
 
