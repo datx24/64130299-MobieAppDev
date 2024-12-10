@@ -13,6 +13,19 @@
         android:theme="@style/Theme.QuizAppGUI"
         tools:targetApi="31">
         <activity
+            android:name=".ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PythonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JavaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.QuizAppGUI" />
+        <activity
+            android:name=".CPlusPlusActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
