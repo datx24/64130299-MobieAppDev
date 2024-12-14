@@ -15,27 +15,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/background_result" />
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008"
-        tools:srcCompat="@drawable/ic_quiz" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        tools:srcCompat="@drawable/completed" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_black"
+            android:text="Your Score: 0"
+            android:textColor="#FFFFFF"
+            android:textSize="48sp" />
+
+        <Button
+            android:id="@+id/retryButton"
+            android:layout_width="129dp"
+            android:layout_height="64dp"
+            android:backgroundTint="#4CAF50"
+            android:text="Retry"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="145dp"
+            tools:layout_editor_absoluteY="322dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,11 +41,11 @@
         app:layout_constraintTop_toTopOf="@+id/backgroundImage">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/btnCplusplus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/shadow_purple"
-            app:cardBackgroundColor="#F01A1A"
             app:cardCornerRadius="16dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,8 +55,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="24dp">
+                android:padding="24dp"
+                >
 
                 <ImageView
                     android:id="@+id/iconCpp"
@@ -85,13 +85,13 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/btnJava"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:background="#B80E0E"
-            app:cardBackgroundColor="#F01A1A"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
-
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -99,8 +99,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="24dp">
+                android:padding="24dp"
+                >
 
                 <ImageView
                     android:id="@+id/iconJava"
@@ -128,11 +128,12 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/btnPython"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/shadow_purple"
-            app:cardBackgroundColor="#F01A1A"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +142,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:padding="24dp">
 
                 <ImageView

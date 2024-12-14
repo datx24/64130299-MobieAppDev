@@ -1,24 +1,29 @@
 package th.nguyenxuandat.quizappgui;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        CardView btnCplusplus = findViewById(R.id.btnCplusplus);
+        CardView btnJava = findViewById(R.id.btnJava);
+        CardView btnPython = findViewById(R.id.btnPython);
+
+        btnCplusplus.setOnClickListener(v -> navigateTo(CPlusPlusActivity.class));
+        btnJava.setOnClickListener(v -> navigateTo(JavaActivity.class));
+        btnPython.setOnClickListener(v -> navigateTo(PythonActivity.class));
+    }
+
+    private void navigateTo(Class<?> destination) {
+        Intent intent = new Intent(MainActivity.this, destination);
+        startActivity(intent);
     }
 }
