@@ -2,15 +2,19 @@ package datnx.doan.timdothatlac;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -44,6 +48,16 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        // Thiết lập tool bar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Thiết lập nút quay lại
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Hiển thị nút quay lại
+            getSupportActionBar().setDisplayShowTitleEnabled(true);//Hiển thị tiêu đề toolbar
+        }
 
         // Nhận dữ liệu từ Intent
         double latitude = getIntent().getDoubleExtra("latitude", 0);
@@ -110,6 +124,20 @@ public class MapActivity extends AppCompatActivity {
         itemMarker.setPosition(itemLocation);
         itemMarker.setTitle("Vị trí đồ vật");
         mapView.getOverlays().add(itemMarker);
+    }
+
+    // Xử lý sự kiện khi người dùng nhấn nút quay lại trên Toolbar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Khi nhấn nút "Quay lại", chuyển về ItemDetailActivity
+                Intent returnIntent = new Intent(MapActivity.this, MainActivity.class);
+                startActivity(returnIntent); // Quay lại ItemDetailActivity mà không thay đổi dữ liệu
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     // Phương thức tính và phát âm khoảng cách, cùng yêu cầu mở camera nếu khoảng cách nhỏ hơn 5m

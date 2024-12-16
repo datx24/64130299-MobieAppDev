@@ -7,37 +7,50 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     tools:context=".AddItemActivity">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background"
+        android:alpha="0.6"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Tiêu đề màn hình -->
         <TextView
             android:id="@+id/tvAddItemTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="24dp"
+            android:gravity="center"
             android:text="Add New Item"
             android:textColor="@color/title_color"
             android:textSize="28sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center"/>
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imgItemPreview"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_camera_placeholder"
-            android:scaleType="centerCrop"
             android:background="@drawable/image_placeholder_background"
-            android:contentDescription="@string/item_image_preview"/>
+            android:contentDescription="@string/item_image_preview"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_camera_placeholder" />
 
         <!-- Nút để chụp ảnh -->
         <com.google.android.material.button.MaterialButton
@@ -97,11 +110,11 @@
             android:id="@+id/btnSaveItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Item"
-            android:textColor="@android:color/white"
             android:backgroundTint="#06D001"
             android:padding="12dp"
-            app:cornerRadius="8dp"/> <!-- Thêm bo góc cho nút -->
+            android:text="Save Item"
+            android:textColor="@android:color/white"
+            app:cornerRadius="8dp" /> <!-- Thêm bo góc cho nút -->
 
     </LinearLayout>
 
