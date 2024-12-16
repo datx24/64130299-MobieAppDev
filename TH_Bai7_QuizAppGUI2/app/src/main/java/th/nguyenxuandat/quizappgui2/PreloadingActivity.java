@@ -19,7 +19,7 @@ public class PreloadingActivity extends AppCompatActivity {
         int LOADING_DURATION = 3000;
 
         new Handler().postDelayed(() -> {
-            gifImageView.setVisibility(View.GONE);  // Hide GIF after loading
+            gifImageView.setVisibility(View.GONE);
 
             findViewById(R.id.appIcon).setVisibility(View.GONE);
 
