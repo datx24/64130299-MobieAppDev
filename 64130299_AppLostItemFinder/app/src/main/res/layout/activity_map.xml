@@ -54,16 +54,6 @@
             app:iconPadding="4dp" />
 
         <!-- Nút Floating Action Button (FAB) để thêm một hành động mới -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="16dp"
-            app:srcCompat="@drawable/ic_add"
-            app:backgroundTint="@color/black"
-            android:contentDescription="Add new item" />
 
     </RelativeLayout>
 
