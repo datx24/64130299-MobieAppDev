@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:type="radial"
+        android:startColor="#72ADB6"
+    android:endColor="#366269"
+    android:gradientRadius="200"
+    android:centerX="50%"
+    android:centerY="51.28%" />
+
+    <corners android:radius="16dp"/>
+    />
+
+    <padding android:left="16dp" android:top="8dp" android:right="16dp" android:bottom="8dp"/> <!-- Điều chỉnh padding -->
+</shape>
