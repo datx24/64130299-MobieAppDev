@@ -49,15 +49,17 @@ public class MainActivity extends AppCompatActivity {
 
         itemList = dbHelper.getAllItems();
 
-        adapter = new ItemAdapter(this,itemList, new ItemAdapter.OnItemActionListener() {
+        adapter = new ItemAdapter(this, itemList, new ItemAdapter.OnItemActionListener() {
             @Override
             public void onDeleteItem(Item item, int position) {
-
-            }
-
-            @Override
-            public void onEditItem(Item item) {
-
+                boolean isDeleted = dbHelper.deleteItem(item.getId());
+                if (isDeleted) {
+                    itemList.remove(position); // Xóa khỏi danh sách hiển thị
+                    adapter.notifyItemRemoved(position); // Cập nhật RecyclerView
+                    Toast.makeText(MainActivity.this, "Xóa đồ vật thành công!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Không thể xóa đồ vật.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         recyclerView.setAdapter(adapter);

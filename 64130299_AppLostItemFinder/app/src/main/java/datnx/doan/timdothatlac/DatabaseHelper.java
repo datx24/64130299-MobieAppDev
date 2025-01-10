@@ -132,7 +132,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         db.close();
-
         return items;
     }
+
+    //Phương thức xóa đồ vật
+    public boolean deleteItem(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete("items", "id=?", new String[]{String.valueOf(id)});
+        db.close();
+        return result > 0; // Trả về true nếu xóa thành công
+    }
+
 }

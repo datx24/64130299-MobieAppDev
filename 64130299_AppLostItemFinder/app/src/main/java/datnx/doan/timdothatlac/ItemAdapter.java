@@ -23,7 +23,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     public interface OnItemActionListener {
         void onDeleteItem(Item item, int position);
-        void onEditItem(Item item);
     }
 
     public ItemAdapter(Context context, List<Item> itemList, OnItemActionListener listener) {
