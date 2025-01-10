@@ -61,6 +61,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             intent.putExtra("address", currentItem.getAddress());
             intent.putExtra("latitude", currentItem.getLatitude());
             intent.putExtra("longitude", currentItem.getLongitude());
+            intent.putExtra("description", currentItem.getDescription());
             context.startActivity(intent);
         });
 

@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     ItemAdapter adapter;
     List<Item> itemList;
     DatabaseHelper dbHelper; // khai báo đối tượng để tương tác với cơ sở dữ liệu
-    private TextView toolbarTitle;
     private SearchView searchView;
 
     @Override
