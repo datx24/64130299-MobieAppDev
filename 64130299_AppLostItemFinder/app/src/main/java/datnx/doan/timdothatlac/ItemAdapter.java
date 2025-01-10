@@ -56,6 +56,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // Các sự kiện click khác nếu cần
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ItemDetailActivity.class);
+            intent.putExtra("id", currentItem.getId());
             intent.putExtra("name", currentItem.getName());
             intent.putExtra("image_url", currentItem.getImageUrl());
             intent.putExtra("address", currentItem.getAddress());

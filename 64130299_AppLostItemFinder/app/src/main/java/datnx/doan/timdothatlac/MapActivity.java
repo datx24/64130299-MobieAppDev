@@ -111,7 +111,7 @@ public class MapActivity extends AppCompatActivity {
 
         // Khởi tạo bản đồ OpenStreetMap
         mapView = findViewById(R.id.osmMapView);
-        mapView.setTileSource(TileSourceFactory.OpenTopo);
+        mapView.setTileSource(TileSourceFactory.OpenTopo );
         mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.ALWAYS);
         mapView.setMultiTouchControls(true);
 

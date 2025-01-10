@@ -1,6 +1,7 @@
 package datnx.doan.timdothatlac;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -143,4 +144,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result > 0; // Trả về true nếu xóa thành công
     }
 
+    // Cập nhật vị trí đồ vật
+    public void updateItemLocation(int itemId, double latitude, double longitude) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LATITUDE, latitude);
+        values.put(COLUMN_LONGITUDE, longitude);
+        db.update(TABLE_NAME, values, COLUMN_ID + " = ?", new String[]{String.valueOf(itemId)});
+        db.close();
+    }
 }

@@ -115,6 +115,16 @@
             android:text="Update Location"
             app:backgroundTint="@color/button_color"
             app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectGPS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Select GPS Location"
+            app:backgroundTint="@color/button_color"
+            app:cornerRadius="8dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
