@@ -25,6 +25,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationRequest;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
@@ -41,6 +42,7 @@ public class MapActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
+
 
     private Handler handler = new Handler(); // Dùng Handler để tạo độ trễ 10 giây
 
@@ -109,9 +111,10 @@ public class MapActivity extends AppCompatActivity {
 
         // Khởi tạo bản đồ OpenStreetMap
         mapView = findViewById(R.id.osmMapView);
-        mapView.setTileSource(TileSourceFactory.MAPNIK);
+        mapView.setTileSource(TileSourceFactory.OpenTopo);
         mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.ALWAYS);
         mapView.setMultiTouchControls(true);
+
 
         // Di chuyển camera đến vị trí đồ vật
         GeoPoint itemLocation = new GeoPoint(latitude, longitude);
