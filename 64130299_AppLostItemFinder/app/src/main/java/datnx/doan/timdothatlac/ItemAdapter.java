@@ -94,6 +94,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             deleteItem = itemView.findViewById(R.id.deleteItem);
         }
     }
+
+    public void updateData(List<Item> newItems) {
+        this.itemList = newItems; // Cập nhật danh sách
+        notifyDataSetChanged();   // Làm mới RecyclerView
+    }
 }
 
 

@@ -104,4 +104,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close(); // Đóng cơ sở dữ liệu sau khi sử dụng
         return itemList; // Trả về danh sách các đồ vật
     }
+
+    //Tìm kiếm tên đồ vật dựa theo tên
+    public List<Item> searchItemsByName(String query) {
+        List<Item> items = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Tìm kiếm gần đúng theo tên
+        String sql = "SELECT * FROM items WHERE LOWER(name) LIKE ?";
+        Cursor cursor = db.rawQuery(sql, new String[]{"%" + query.toLowerCase() + "%"});
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Tạo đối tượng Item từ dữ liệu trong bảng
+                Item item = new Item(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("description")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("image_url")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("address")),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow("latitude")),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow("longitude")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("timestamp"))
+                );
+                items.add(item);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return items;
+    }
 }

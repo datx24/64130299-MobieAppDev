@@ -11,6 +11,7 @@ public class Item {
     private final double longitude;
     private final String timestamp;
 
+
     // Constructor
     public Item(int id, String name, String description, String imageUrl, String address, double latitude, double longitude, String timestamp) {
         this.id = id;

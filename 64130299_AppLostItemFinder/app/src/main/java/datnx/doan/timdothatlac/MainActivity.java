@@ -26,34 +26,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find the views
-        toolbarTitle = findViewById(R.id.toolbar_title);
-        searchView = findViewById(R.id.searchView);
+        searchView = findViewById(R.id.search_view);
 
-        // Set up the SearchView to expand when clicked
-        searchView.setOnSearchClickListener(v -> {
-            // Hide title when the search icon is clicked
-            toolbarTitle.setVisibility(View.GONE);
-            searchView.setVisibility(View.VISIBLE);  // Ensure SearchView is visible
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchItems(query); // Gọi phương thức tìm kiếm khi nhấn Enter
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchItems(newText); // Gọi phương thức tìm kiếm khi thay đổi từ khóa
+                return true;
+            }
         });
 
-        // Set up the SearchView listener to collapse and show title when search is closed
-        searchView.setOnCloseListener(() -> {
-            toolbarTitle.setVisibility(View.VISIBLE);  // Show title when search is closed
-            return false;
-        });
-
-        //Tạo RecycleView và thiết lập LayoutManager
         recyclerView = findViewById(R.id.recyclerViewItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //Khởi tạo databaseHelper để tương tác với cơ sở dữ liệu
         dbHelper = new DatabaseHelper(this);
 
-        //Lấy toàn bộ item từ cơ sở dữ liệu
         itemList = dbHelper.getAllItems();
 
-        //Tạo và gán Adapter cho RecyclerView
         adapter = new ItemAdapter(this,itemList, new ItemAdapter.OnItemActionListener() {
             @Override
             public void onDeleteItem(Item item, int position) {
@@ -71,7 +66,17 @@ public class MainActivity extends AppCompatActivity {
         if(itemList.isEmpty()) {
             Toast.makeText(this,"Không có danh sách đồ vật trong cơ sở dữ liệu !",Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private void searchItems(String query) {
+        List<Item> filteredList = dbHelper.searchItemsByName(query);
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "Không tìm thấy đồ vật phù hợp!", Toast.LENGTH_SHORT).show();
+        }
+
+        // Cập nhật RecyclerView với danh sách mới
+        adapter.updateData(filteredList);
     }
 
     //Phương thức chuyển sang màn hình thêm đồ vật
@@ -80,7 +85,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         // Chuyển đến Activity để thêm đồ vật mới
     }
-
-    
-
 }
