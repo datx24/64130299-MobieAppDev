@@ -37,11 +37,26 @@ public class ItemDetailActivity extends AppCompatActivity {
     private TextView tvLatitude, tvLongitude;
     private int itemId;  // Biến lưu trữ ID món đồ
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_item_detail);
+
+        // Lấy đối tượng nút "Back to Main"
+        Button btnBackToMain = findViewById(R.id.btnBackToMain);
+
+        // Thiết lập sự kiện khi nhấn nút
+        btnBackToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tạo Intent để quay lại MainActivity
+                Intent returnIntent = new Intent(ItemDetailActivity.this, MainActivity.class);
+                startActivity(returnIntent);
+                finish();
+            }
+        });
 
         // Nhận dữ liệu từ intent
         itemId = getIntent().getIntExtra("id", -1);

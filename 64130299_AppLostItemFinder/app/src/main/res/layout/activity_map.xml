@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MapActivity">
 
+    <!-- Hình nền cho giao diện -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Toolbar (Top App Bar) -->
+        <!-- Thanh công cụ (Toolbar) -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
@@ -71,6 +72,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- PreviewView để hiển thị camera -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="32dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/btnBackToItemDetail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56" /> <!-- Ban đầu ẩn -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

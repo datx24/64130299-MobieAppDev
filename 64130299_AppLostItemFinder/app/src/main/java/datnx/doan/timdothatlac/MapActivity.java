@@ -42,6 +42,10 @@ public class MapActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
+    private int itemId;
+    private String itemName;
+    private String itemDescription;
+    private String itemImageUrl;
 
 
     private Handler handler = new Handler(); // Dùng Handler để tạo độ trễ 10 giây
@@ -64,6 +68,10 @@ public class MapActivity extends AppCompatActivity {
         // Nhận dữ liệu từ Intent
         double latitude = getIntent().getDoubleExtra("latitude", 0);
         double longitude = getIntent().getDoubleExtra("longitude", 0);
+        String itemId = getIntent().getStringExtra("itemId");
+        String itemName = getIntent().getStringExtra("itemName");
+        String itemDescription = getIntent().getStringExtra("itemDescription");
+        String itemImageUrl = getIntent().getStringExtra("itemImageUrl");  // Nếu có URL ảnh
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -134,10 +142,17 @@ public class MapActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // Khi nhấn nút "Quay lại", chuyển về ItemDetailActivity
-                Intent returnIntent = new Intent(MapActivity.this, MainActivity.class);
-                startActivity(returnIntent); // Quay lại ItemDetailActivity mà không thay đổi dữ liệu
+                // Trả lại dữ liệu mà không thay đổi
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("itemId", itemId);  // Truyền lại itemId hiện tại
+                returnIntent.putExtra("itemName", itemName);  // Truyền lại itemName hiện tại
+                returnIntent.putExtra("itemDescription", itemDescription);  // Truyền lại itemDescription hiện tại
+                returnIntent.putExtra("itemImageUrl", itemImageUrl);  // Truyền lại itemImageUrl hiện tại
+
+                setResult(RESULT_OK, returnIntent);  // Trả kết quả về ItemDetailActivity
+                finish();  // Kết thúc MapActivity và quay lại ItemDetailActivity
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
