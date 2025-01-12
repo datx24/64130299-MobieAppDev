@@ -1,3 +1,68 @@
+# **Tìm Đồ Thất Lạc**  
+> Ứng dụng hỗ trợ quản lý và tìm kiếm đồ vật thất lạc một cách hiệu quả.
+
+---
+
+## **Mục lục**
+1. [Giới thiệu](#giới-thiệu)
+2. [Chức năng chính](#chức-năng-chính)
+3. [Công nghệ sử dụng](#công-nghệ-sử-dụng)
+4. [Giao diện](#giao-diện)
+5. [Tác giả](#tác-giả)
+
+---
+
+## **Giới thiệu**
+Ứng dụng **Tìm Đồ Thất Lạc** được xây dựng để giúp người dùng quản lý các đồ vật thất lạc và nhanh chóng tìm kiếm, theo dõi thông tin đồ vật.  
+
+Ứng dụng bao gồm:  
+- **Danh sách đồ vật:** Xem các đồ vật đã được thêm vào.  
+- **Tìm kiếm:** Tìm kiếm đồ vật theo tên một cách dễ dàng.  
+- **Quản lý đồ vật:** Thêm, sửa, hoặc xóa thông tin đồ vật.  
+
+---
+
+## **Chức năng chính**
+1. **Thêm đồ vật:**  
+   Người dùng có thể thêm thông tin đồ vật bao gồm: tên, mô tả, hình ảnh.  
+2. **Hiển thị danh sách đồ vật:**  
+   Sử dụng RecyclerView để hiển thị danh sách đồ vật dưới dạng card.  
+3. **Tìm kiếm:**  
+   Tìm kiếm đồ vật theo từ khóa thông qua SearchView.  
+4. **Xóa đồ vật:**  
+   Xóa đồ vật không cần thiết khỏi danh sách.  
+
+---
+
+## **Công nghệ sử dụng**
+- **Ngôn ngữ:** Java  
+- **Cơ sở dữ liệu:** SQLite  
+- **Thư viện:**  
+  - RecyclerView: Hiển thị danh sách.  
+  - Material Design: Tạo giao diện hiện đại và thân thiện.  
+
+---
+
+## **Giao diện**
+### **1. Màn hình chính**  
+Hiển thị danh sách đồ vật kèm chức năng tìm kiếm:  
+![Màn hình chính](https://via.placeholder.com/800x400?text=Giao+diện+Màn+hình+Chính)  
+
+### **2. Màn hình thêm đồ vật**  
+Cho phép người dùng thêm đồ vật mới:  
+![Màn hình thêm đồ vật](https://via.placeholder.com/800x400?text=Giao+diện+Thêm+Đồ+Vật)  
+
+---
+
+## **Tác giả**
+- **Họ và tên:** Nguyễn Xuân Đạt  
+- **MSSV:** 64130299  
+- **Email:** dat.nx.64cntt@ntu.edu.vn  
+- **Lớp:** 64CNTT.CLC2  
+
+---
+
+
 # Bài Tập Android Java:
 
 ## Tính Toán Số Học
