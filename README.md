@@ -50,6 +50,13 @@ Hiển thị danh sách đồ vật kèm chức năng tìm kiếm:
   <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961170789_3652cad9516d2de2fba3af98dc5bf768.jpg" alt="Mô tả ảnh" width="300" />
 </div>
 
+### **2. Màn hình chi tiết đồ vật**  
+Hiển thị thông tin chi tiết đồ vật.
+<div align="center">
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961198860_045ffa048ca1df3880e547c5c11774a5.jpg" alt="Mô tả ảnh" width="300" />
+</div>
+
+
 ### **2. Màn hình thêm đồ vật**  
 Cho phép người dùng thêm đồ vật mới:  
 <div align="center">
