@@ -56,6 +56,12 @@ Cho phép người dùng thêm đồ vật mới:
   <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961216261_648f777f033c5c417d63451ef29493d7.jpg" alt="Mô tả ảnh" width="300" />
 </div>
 
+### **3. Màn hình hiển thị bản đồ**  
+Cho phép người dùng xem bản đồ đồ vật:  
+<div align="center">
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961223427_938be0d674396b9d7168589bba4cbf91.jpg" alt="Mô tả ảnh" width="300" />
+</div>
+
 ---
 
 ## **Tác giả**
