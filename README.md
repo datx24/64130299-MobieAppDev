@@ -45,12 +45,16 @@
 
 ## **Giao diện**
 ### **1. Màn hình chính**  
-Hiển thị danh sách đồ vật kèm chức năng tìm kiếm:  
-<img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961170789_3652cad9516d2de2fba3af98dc5bf768.jpg" alt="Mô tả ảnh" width="300" />
+Hiển thị danh sách đồ vật kèm chức năng tìm kiếm: 
+<div align="center">
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961170789_3652cad9516d2de2fba3af98dc5bf768.jpg" alt="Mô tả ảnh" width="300" />
+</div>
 
 ### **2. Màn hình thêm đồ vật**  
 Cho phép người dùng thêm đồ vật mới:  
-<img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961216261_648f777f033c5c417d63451ef29493d7.jpg" alt="Mô tả ảnh" width="300" />
+<div align="center">
+  <img src="https://github.com/datx24/64130299-MobieAppDev/blob/main/64130299_AppLostItemFinder/z6221961216261_648f777f033c5c417d63451ef29493d7.jpg" alt="Mô tả ảnh" width="300" />
+</div>
 
 ---
 
