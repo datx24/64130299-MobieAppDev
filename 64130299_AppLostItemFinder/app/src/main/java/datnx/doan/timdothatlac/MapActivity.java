@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +47,7 @@ public class MapActivity extends AppCompatActivity {
     private String itemName;
     private String itemDescription;
     private String itemImageUrl;
+    private Button btnGoToCamera;
 
 
     private Handler handler = new Handler(); // Dùng Handler để tạo độ trễ 10 giây
@@ -55,6 +57,20 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        btnGoToCamera = findViewById(R.id.btnGoToCamera);
+
+        //Phương thức mở camera để nhận diện
+        btnGoToCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapActivity.this, CameraActivity.class);
+                // Truyền imageUrl từ MapActivity sang CameraActivity
+                String imageUrl = getIntent().getStringExtra("image_url");
+                intent.putExtra("image_url", imageUrl);
+                startActivity(intent);
+            }
+        });
+
         // Thiết lập tool bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,16 +78,16 @@ public class MapActivity extends AppCompatActivity {
         //Thiết lập nút quay lại
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Hiển thị nút quay lại
-            getSupportActionBar().setDisplayShowTitleEnabled(true);//Hiển thị tiêu đề toolbar
+            getSupportActionBar().setDisplayShowTitleEnabled(false);//Hiển thị tiêu đề toolbar
         }
 
         // Nhận dữ liệu từ Intent
         double latitude = getIntent().getDoubleExtra("latitude", 0);
         double longitude = getIntent().getDoubleExtra("longitude", 0);
+        String imageUrl = getIntent().getStringExtra("image_url");
         String itemId = getIntent().getStringExtra("itemId");
         String itemName = getIntent().getStringExtra("itemName");
         String itemDescription = getIntent().getStringExtra("itemDescription");
-        String itemImageUrl = getIntent().getStringExtra("itemImageUrl");  // Nếu có URL ảnh
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -147,7 +163,7 @@ public class MapActivity extends AppCompatActivity {
                 returnIntent.putExtra("itemId", itemId);  // Truyền lại itemId hiện tại
                 returnIntent.putExtra("itemName", itemName);  // Truyền lại itemName hiện tại
                 returnIntent.putExtra("itemDescription", itemDescription);  // Truyền lại itemDescription hiện tại
-                returnIntent.putExtra("itemImageUrl", itemImageUrl);  // Truyền lại itemImageUrl hiện tại
+                returnIntent.putExtra("image_url", itemImageUrl);  // Truyền lại itemImageUrl hiện tại
 
                 setResult(RESULT_OK, returnIntent);  // Trả kết quả về ItemDetailActivity
                 finish();  // Kết thúc MapActivity và quay lại ItemDetailActivity

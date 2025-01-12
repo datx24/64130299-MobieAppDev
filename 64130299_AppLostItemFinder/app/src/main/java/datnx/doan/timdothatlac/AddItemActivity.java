@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
@@ -16,6 +17,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.google.android.material.button.MaterialButton;
@@ -42,6 +44,16 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
+        // Thiết lập tool bar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Thiết lập nút quay lại
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Hiển thị nút quay lại
+        }
+
         //Khởi tạo các thành phần trong giao diện
         btnCaptureImage = findViewById(R.id.btnCaptureImage); //Nút chụp ảnh
         btnSaveItem = findViewById(R.id.btnSaveItem); //Nút lưu item
@@ -61,6 +73,17 @@ public class AddItemActivity extends AppCompatActivity {
 
         //Thiết lập sự kiện cho nút lưu đồ vật
         btnSaveItem.setOnClickListener(view -> getCurrentLocationAndSaveItem());
+    }
+
+    // Xử lý sự kiện khi người dùng nhấn nút quay lại trên Toolbar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Xử lý sự kiện khi nhấn nút quay lại
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // Quay lại Activity trước đó
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     //Hàm để lấy vị trí hiện tại và gọi phương thức để lưu thông tin đồ vật

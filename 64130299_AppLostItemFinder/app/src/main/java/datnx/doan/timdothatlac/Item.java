@@ -9,7 +9,6 @@ public class Item {
     private final String address;
     private final double latitude;
     private final double longitude;
-    private final String timestamp;
 
 
     // Constructor
@@ -21,7 +20,6 @@ public class Item {
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.timestamp = timestamp;
     }
 
     // Getters and setters (optional)
@@ -51,10 +49,6 @@ public class Item {
 
     public double getLongitude() {
         return longitude;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
     }
 }
 

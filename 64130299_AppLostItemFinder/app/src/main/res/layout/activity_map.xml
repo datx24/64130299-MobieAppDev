@@ -29,19 +29,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Thanh công cụ (Toolbar) -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
             android:background="?attr/colorPrimary"
-            android:title="Vị trí đồ vật"
-            android:titleTextColor="@color/item_name_color"
+            android:elevation="4dp"
+            app:contentInsetStartWithNavigation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <!-- TextView để hiển thị tiêu đề -->
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Bản đồ"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="142dp"
+                tools:layout_editor_absoluteY="14dp" /> <!-- Đặt TextView ở giữa -->
+        </androidx.appcompat.widget.Toolbar>
 
         <!-- Bản đồ OpenStreetMap -->
         <org.osmdroid.views.MapView
@@ -52,40 +65,30 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@id/btnBackToItemDetail"
+            app:layout_constraintBottom_toTopOf="@id/btnGoToCamera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <!-- Nút để mở camera -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBackToItemDetail"
+            android:id="@+id/btnGoToCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
             android:text="Mở camera"
             android:textColor="@android:color/white"
+            android:textStyle="bold"
             app:backgroundTint="@color/location_color"
-            app:icon="@drawable/ic_cam"
+            app:icon="@drawable/photography"
             app:iconGravity="textStart"
             app:iconPadding="10dp"
+            app:iconSize="32dp"
+            app:iconTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- PreviewView để hiển thị camera -->
-        <androidx.camera.view.PreviewView
-            android:id="@+id/previewView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="32dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@id/btnBackToItemDetail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.42"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.56" /> <!-- Ban đầu ẩn -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

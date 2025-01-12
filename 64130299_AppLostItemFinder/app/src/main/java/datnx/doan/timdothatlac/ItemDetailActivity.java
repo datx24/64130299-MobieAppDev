@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -43,6 +45,16 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_item_detail);
+
+        // Thiết lập tool bar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Thiết lập nút quay lại
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Hiển thị nút quay lại
+        }
 
         // Lấy đối tượng nút "Back to Main"
         Button btnBackToMain = findViewById(R.id.btnBackToMain);
@@ -84,17 +96,26 @@ public class ItemDetailActivity extends AppCompatActivity {
         // Hiển thị dữ liệu lên giao diện
         ImageView imageView = findViewById(R.id.imgItem);
         TextView nameTextView = findViewById(R.id.tvItemName);
-        TextView addressTextView = findViewById(R.id.tvAddress);
         TextView latitudeTextView = findViewById(R.id.tvLatitude);
         TextView longitudeTextView = findViewById(R.id.tvLongitude);
         TextView tvDescription = findViewById(R.id.tvDescription);
 
-        nameTextView.setText(itemName);
-        addressTextView.setText("Address: " + itemAddress);
-        latitudeTextView.setText("Latitude: " + itemLatitude);
-        longitudeTextView.setText("Longitude: " + itemLongitude);
+        nameTextView.setText("Tên đồ vật: " + itemName);
+        latitudeTextView.setText("Vĩ độ: " + itemLatitude);
+        longitudeTextView.setText("Kinh độ: " + itemLongitude);
         tvDescription.setText("Mô tả: " + itemDescription);
         Picasso.get().load(itemImageUrl).into(imageView);
+    }
+
+    // Xử lý sự kiện khi người dùng nhấn nút quay lại trên Toolbar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Xử lý sự kiện khi nhấn nút quay lại
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // Quay lại Activity trước đó
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // Cập nhật vị trí mới
@@ -112,8 +133,8 @@ public class ItemDetailActivity extends AppCompatActivity {
                                 double longitude = location.getLongitude();
 
                                 // Cập nhật UI với vị trí mới
-                                tvLatitude.setText("Latitude: " + latitude);
-                                tvLongitude.setText("Longitude: " + longitude);
+                                tvLatitude.setText("Kinh độ: " + latitude);
+                                tvLongitude.setText("Vĩ độ: " + longitude);
 
                                 // Cập nhật vào cơ sở dữ liệu
                                 dbHelper.updateItemLocation(itemId, latitude, longitude);
@@ -190,6 +211,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         // Gửi dữ liệu tới vị trí
         intent.putExtra("latitude", getIntent().getDoubleExtra("latitude", 0));
         intent.putExtra("longitude", getIntent().getDoubleExtra("longitude", 0));
+        String imageUrl = getIntent().getStringExtra("image_url");
+        intent.putExtra("image_url", imageUrl);
 
         startActivity(intent);
     }

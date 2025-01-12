@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "datnx.doan.timdothatlac"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -33,6 +33,9 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.mlkit:object-detection:17.0.2")
+
+
     // Thư viện Maps và Location
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.1.0")
@@ -64,7 +67,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
-
+    implementation(project(":sdk"))
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

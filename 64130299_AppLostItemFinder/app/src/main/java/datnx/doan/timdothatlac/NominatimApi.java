@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 
 public interface NominatimApi {
     @GET("reverse")
-    Call<LocationResponse> getLocation(
+    Call<Item> getLocation(
             @Query("lat") double latitude,
             @Query("lon") double longitude,
             @Query("format") String format
